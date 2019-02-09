@@ -1,9 +1,9 @@
-def use_universal_modules!(options = {})
+def use_unimodules!(options = {})
   # Default path for Podfile is project/ios/Podfile, and node_modules is in project/node_modules
   # This may be different when using yarn workspaces or some other custom setup
   node_modules_path = options.fetch(:node_modules_path, '../node_modules')
 
-  # Universal module core packages
+  # Unimodule core packages
   pod "EXCore", path: "#{node_modules_path}/expo-core/ios"
   pod "EXReactNativeAdapter", path: "#{node_modules_path}/expo-react-native-adapter/ios", inhibit_warnings: true
 

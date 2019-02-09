@@ -1,4 +1,4 @@
-ext.useUniversalModules = [
+ext.useUnimodules = [
   apply: { options = [ nodeModulesPath: "../node_modules" ] ->
       def nodeModulesPath = options.getOrDefault("nodeModulesPath", "../node_modules")
 
