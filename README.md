@@ -31,7 +31,9 @@ npm install @unimodules/react-native-platform
 
 ## API
 
-If you need to access some of the unimodules provided by this package you can import them through it.
+It's possible that you will not have to use any of the code provided by this package directly, it may be used only by other unimodules that you install.
+
+But it's likely that you will want to use something like FileSystem or Permissions, and to do that you can import the following modules like so:
 
 ```js
 import {
@@ -42,7 +44,7 @@ import {
 } from '@unimodules/react-native-platform';
 ```
 
-Or you can import them directly from the unimodule if you like, but your linter may complain for import a transitive dependency.
+You can import them directly from the specific unimodule packag if you like, but your linter may complain for import a transitive dependency.
 
 ```js
 import * Permissions as  from 'expo-permissions';
