@@ -1,6 +1,6 @@
 # @unimodules/react-native-platform
 
-This library contains the core unimodule infrastructure and a collection of unimodules and interfaces that are commonly depended on by other unimodules.
+This library contains the core Unimodule infrastructure and a collection of Unimodules and interfaces that are commonly depended on by other Unimodules.
 You will need to install this before using libraries from Foundation, like `expo-camera`, `expo-media-library`, and others.
 
 ## Installation
@@ -31,7 +31,7 @@ npm install @unimodules/react-native-platform
 
 ## API
 
-It's possible that you will not have to use any of the code provided by this package directly, it may be used only by other unimodules that you install.
+It's possible that you will not have to use any of the code provided by this package directly, it may be used only by other Unimodules that you install.
 
 But it's likely that you will want to use something like FileSystem or Permissions, and to do that you can import the following modules like so:
 
@@ -44,7 +44,7 @@ import {
 } from '@unimodules/react-native-platform';
 ```
 
-You can import them directly from the specific unimodule packag if you like, but your linter may complain for import a transitive dependency.
+You can import them directly from the specific Unimodule packag if you like, but your linter may complain for import a transitive dependency.
 
 ```js
 import * Permissions as  from 'expo-permissions';
