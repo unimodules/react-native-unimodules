@@ -6,7 +6,7 @@ You will need to install this before using libraries from Foundation, like `expo
 ## Installation
 
 The easiest way to do this is to initialize a "custom" project with `expo-cli`. If you have an existing app, you can follow these steps instead.
-*This project requires that you use Cocoapods on iOS*, to set iot up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://facebook.github.io/react-native/docs/integration-with-existing-apps#3-install-cocoapods).
+**This project requires that you use Cocoapods on iOS**, to set iot up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://facebook.github.io/react-native/docs/integration-with-existing-apps#3-install-cocoapods).
 
 ### Install the package
 
