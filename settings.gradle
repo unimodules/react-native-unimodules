@@ -8,6 +8,9 @@ ext.useUnimodules = [
       include ":expo-react-native-adapter"
       project(":expo-react-native-adapter").projectDir = new File(rootProject.projectDir, "${nodeModulesPath}/expo-react-native-adapter/android")
 
+      include ":expo-errors"
+      project(":expo-errors").projectDir = new File(rootProject.projectDir, "${nodeModulesPath}/expo-errors/android")
+
       include ":expo-sensors-interface"
       project(":expo-sensors-interface").projectDir = new File(rootProject.projectDir, "${nodeModulesPath}/expo-sensors-interface/android")
 

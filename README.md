@@ -47,5 +47,5 @@ import {
 You can import them directly from the specific Unimodule packag if you like, but your linter may complain for import a transitive dependency.
 
 ```js
-import * Permissions as  from 'expo-permissions';
+import * as Permissions from 'expo-permissions';
 ```

@@ -6,6 +6,7 @@ def use_unimodules!(options = {})
   # Unimodule core packages
   pod "EXCore", path: "#{node_modules_path}/expo-core/ios"
   pod "EXReactNativeAdapter", path: "#{node_modules_path}/expo-react-native-adapter/ios", inhibit_warnings: true
+  pod "EXErrors", path: "#{node_modules_path}/expo-errors/ios"
 
   # Interfaces
   pod "EXFontInterface", path: "#{node_modules_path}/expo-font-interface/ios"
