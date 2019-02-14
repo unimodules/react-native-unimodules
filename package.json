@@ -1,6 +1,6 @@
 {
   "name": "@unimodules/react-native-platform",
-  "version": "0.1.6",
+  "version": "0.1.9",
   "description": "",
   "main": "index.js",
   "private": false,
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "expo-asset": "2.1.0-alpha.3",
+    "expo-asset": "2.1.0-alpha.6",
     "expo-barcode-scanner-interface": "~2.0.0",
     "expo-camera-interface": "~2.0.0",
     "expo-constants": "2.0.1",
@@ -16,7 +16,7 @@
     "expo-core": "2.0.0",
     "expo-errors": "^1.0.0",
     "expo-face-detector-interface": "~2.0.0",
-    "expo-file-system": "2.0.1-alpha.2",
+    "expo-file-system": "2.1.0-alpha.1",
     "expo-file-system-interface": "~2.0.0",
     "expo-font-interface": "~2.0.0",
     "expo-image-loader-interface": "~2.0.0",
