@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-expo-asset@2.0.1-alpha.2:
-  version "2.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-2.0.1-alpha.2.tgz#2feb61df650da7d6aaa1057eea2afdeff114ef87"
-  integrity sha512-DI4ASzoAKvZ0h4Ed2mGV6fvp6yChzlDL9bGHHtmXtI1bwPbuuVKUm3Ae/YUaLo/yCGuzg9RvXx9014VQdwDdTg==
+expo-asset@2.1.0-alpha.6:
+  version "2.1.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-2.1.0-alpha.6.tgz#96e7bb32b94f9b631e350ab99dee7e5e59cc2617"
+  integrity sha512-GXIMUCzeKWNPIyovAl48pxCZETDhDmMbzxNpLkfgCFCEPySeH/i1Z7PvnWBwVjuOvA4Sb8Xt1Sa5pOyBJbP6qA==
   dependencies:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
@@ -37,7 +37,12 @@ expo-constants@2.0.1:
     ua-parser-js "^0.7.19"
     uuid "^3.3.2"
 
-expo-core@2.0.0, expo-core@~2.0.0:
+expo-core@2.1.0-alpha.0:
+  version "2.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/expo-core/-/expo-core-2.1.0-alpha.0.tgz#3ca057b52cf4b8ec696878c4c3bf5ff5b4037f25"
+  integrity sha512-nKbwDP5vuGsnG9Ix47To7NmB4nON4n7+haXuNbpwiwhMxDfE3aCJHSExB4Yr+1oPsGkwM3QuYCWFoJ/Y5Go4Yw==
+
+expo-core@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/expo-core/-/expo-core-2.0.0.tgz#374e297add4386296b9cdc429ceeaa5797212a24"
   integrity sha512-mGvAzqJyN/RCIX34dCOnPYu4KqTNaoKGbwjssWUKIlquNeQAuT7q09h3D52xK4eo0zeCV8tg8jipYJEzgzFDHQ==
@@ -63,10 +68,10 @@ expo-file-system-interface@~2.0.0:
   dependencies:
     expo-core "~2.0.0"
 
-expo-file-system@2.0.1-alpha.2:
-  version "2.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-2.0.1-alpha.2.tgz#73e111b4b4a4c4020082602e6700795a4ee15727"
-  integrity sha512-eP7n0vsDVgXMFWNQN8Tmb47wlui0LLkSQeCIS63qjU8oG9JLMROgC5XhoBi2sVxiJvIkf+IVD5VdP57xB5YNZQ==
+expo-file-system@2.1.0-alpha.1:
+  version "2.1.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-2.1.0-alpha.1.tgz#043c92f0981574605ddfe6a273a2d2f3bd28e89d"
+  integrity sha512-Fd0MFRSkHWHdRvsFxt/b2PfG66Jo4WgIi/nPYlLuXJfZQm6jZqDD802FZnrcIJ0WnPY0x3OiRTvQZipco4hXrQ==
   dependencies:
     uuid-js "^0.7.5"
 
