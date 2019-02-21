@@ -1,0 +1,9 @@
+{
+  "libName": "expo-file-system",
+  "platforms": {
+    "ios": {
+      "podName": "EXFileSystem",
+      "subdirectory": "ios"
+    }
+  }
+}
