@@ -1,4 +1,4 @@
-# @unimodules/react-native-platform
+# @unimodules/core
 
 This library contains the core Unimodule infrastructure and a collection of Unimodules and interfaces that are commonly depended on by other Unimodules.
 You will need to install this before using libraries from Foundation, like `expo-camera`, `expo-media-library`, and others.
@@ -11,7 +11,7 @@ The easiest way to do this is to initialize a "custom" project with `expo-cli`. 
 ### Install the package
 
 ```bash
-npm install @unimodules/react-native-platform
+npm install @unimodules/core
 ```
 
 ### Configure iOS
@@ -52,9 +52,9 @@ In order to submit your app to the App Store, you will need to eventually add th
 
 ### Configure Android
 
-- Add `apply from: '../node_modules/@unimodules/react-native-platform/settings.gradle'` and then `useUnimodules.apply()` to the top of  `android/settings.gradle`
+- Add `apply from: '../node_modules/@unimodules/core/settings.gradle'` and then `useUnimodules.apply()` to the top of  `android/settings.gradle`
   - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param for this: `useUnimodules.apply(nodeModulesPath: "../../../node_modules")`
-- Add `apply from: '../../node_modules/@unimodules/react-native-platform/build.gradle'` anywhere in `android/app/build.gradle`
+- Add `apply from: '../../node_modules/@unimodules/core/build.gradle'` anywhere in `android/app/build.gradle`
 - Update `minSdkVersion` in `android/build.gradle` to 21
 - Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/eb4606e39d5d5e6a764c16acde82198a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
 
@@ -70,7 +70,7 @@ import {
   Constants,
   FileSystem,
   Permissions,
-} from '@unimodules/react-native-platform';
+} from '@unimodules/core';
 ```
 
 You can import them directly from the specific Unimodule packag if you like, but your linter may complain for import a transitive dependency.

@@ -1,6 +1,6 @@
 {
-  "name": "@unimodules/react-native-platform",
-  "version": "0.1.15",
+  "name": "@unimodules/core",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "private": false,
@@ -22,7 +22,7 @@
     "expo-image-loader-interface": "~2.0.0",
     "expo-permissions": "~2.0.0",
     "expo-permissions-interface": "~2.0.0",
-    "expo-react-native-adapter": "2.0.0",
+    "expo-react-native-adapter": "2.1.0-alpha.1",
     "expo-sensors-interface": "~2.0.0",
     "expo-task-manager-interface": "~1.0.0"
   },
