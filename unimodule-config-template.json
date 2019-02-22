@@ -1,9 +1,4 @@
 {
-  "libName": "expo-file-system",
-  "platforms": {
-    "ios": {
-      "podName": "EXFileSystem",
-      "subdirectory": "ios"
-    }
-  }
+  "platforms": ["ios", "android"],
+  "targets": ["react-native"]
 }
