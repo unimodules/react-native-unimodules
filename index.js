@@ -2,7 +2,7 @@
 import 'expo-asset';
 export { Asset } from 'expo-asset';
 
-import { Permissions } from 'expo-permissions';
+import * as Permissions from 'expo-permissions';
 export { Permissions };
 
 import * as FileSystem from 'expo-file-system';
