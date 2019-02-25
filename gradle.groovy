@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper
 
 def doesUnimoduleSupportPlatform(Map unimoduleJson, String platform) {
-  def platforms = unimoduleJson.platforms || ['android']
+  def platforms = unimoduleJson.platforms// || ['android']
 
   if (platforms instanceof Map) {
     return platforms.containsKey(platform)
@@ -45,15 +45,33 @@ def findUnimodules(String target, List exclude, List modulesPaths) {
   return unimodules
 }
 
-ext.useUnimodules = { Map options = [target: 'react-native', exclude: [], modulesPaths: ['../node_modules']] ->
+ext.useUnimodules = { Map customOptions = [] ->
+  def options = [
+    modulesPaths: ['../node_modules'],
+    configuration: 'expendency',
+    target: 'react-native',
+    exclude: [],
+  ] << customOptions
+
   def unimodules = findUnimodules(options.target, options.exclude, options.modulesPaths)
-  
+
   for (unimodule in unimodules) {
-    expendency(unimodule.name)
+    if (options.configuration == 'expendency') {
+      expendency(unimodule.name)
+    } else {
+      Object dependency = project.project(":${unimodule.name}")
+      project.dependencies.add(options.configuration, dependency, null)
+    }
   }
 }
 
-ext.includeUnimodules = { options = [target: 'react-native', exclude: [], modulesPaths: ['../node_modules']] ->
+ext.includeUnimodules = { Map customOptions = [] ->
+  def options = [
+    modulesPaths: ['../node_modules'],
+    target: 'react-native',
+    exclude: [],
+  ] << customOptions
+
   def unimodules = findUnimodules(options.target, options.exclude, options.modulesPaths)
 
   for (unimodule in unimodules) {

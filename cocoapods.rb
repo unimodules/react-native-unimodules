@@ -1,43 +1,51 @@
 require 'json'
 
-def use_unimodules!(options = {})
-  node_modules_paths = options.fetch(:node_modules_paths, ['node_modules'])
-  exclude = options.fetch(:exclude, [])
-  target = options.fetch(:target, 'react-native')
+def use_unimodules!(custom_options = {})
+  options = {
+    modules_paths: ['../node_modules'],
+    target: 'react-native',
+    exclude: [],
+  }.deep_merge(custom_options)
+
+  modules_paths = options.fetch(:modules_paths)
+  exclude = options.fetch(:exclude)
+  target = options.fetch(:target)
 
   unimodules = []
 
-  node_modules_paths.each { |node_module_path|
-    globPattern = File.join(node_module_path, '**', 'unimodule.json')
+  modules_paths.each { |module_path|
+    glob_pattern = File.join(module_path, '**', 'unimodule.json')
 
-    Dir.glob(globPattern) { |moduleConfigPath|
-      unimodule_json = JSON.parse(File.read(moduleConfigPath))
-      directory = File.dirname(moduleConfigPath)
-      platforms = unimodule_json['platforms']
-      targets = unimodule_json['targets']
+    Dir.glob(glob_pattern) { |module_config_path|
+      unimodule_json = JSON.parse(File.read(module_config_path))
+      directory = File.dirname(module_config_path)
+      platforms = unimodule_json['platforms'] || ['ios']
+      targets = unimodule_json['targets'] || ['react-native']
 
-      if unimodule_supports_platform(platforms) && unimodule_supports_target(targets, target) then
+      if unimodule_supports_platform(platforms, 'ios') && unimodule_supports_target(targets, target) then
         package_name = unimodule_json['name'] || get_package_name(directory)
 
         if !exclude.include?(package_name) then
+          unimodule_config = { "subdirectory" => 'ios' }.merge(unimodule_json.fetch('ios', {}))
+
           unimodules.push({
             name: package_name,
             directory: directory,
-            config: platforms.class == Array ? {} : platforms['ios'],
+            config: unimodule_config,
           })
         end
       end
     }
   }
 
-  unimodules.each { |unimodule|
+  unimodules.sort! { |x,y| x['name'] <=> y['name'] }.each { |unimodule|
     directory = unimodule[:directory]
     config = unimodule[:config]
 
-    subdirectory = config.fetch('subdirectory', 'ios')
-    podName = config['podName'] || find_pod_name(directory, subdirectory)
+    subdirectory = config['subdirectory']
+    pod_name = config.fetch('podName', find_pod_name(directory, subdirectory))
 
-    puts "pod \"#{podName}\", path: \"#{directory}/#{subdirectory}\""
+    pod "#{pod_name}", path: "#{directory}/#{subdirectory}"
   }
 end
 
@@ -52,12 +60,10 @@ def find_pod_name(package_path, subdirectory)
   return podspec_path && File.basename(podspec_path).chomp('.podspec')
 end
 
-def unimodule_supports_platform(platforms)
-  return platforms.class == Array && platforms.include?('ios') || !platforms['ios'].nil?
+def unimodule_supports_platform(platforms, platform)
+  return platforms.class == Array && platforms.include?(platform)
 end
 
 def unimodule_supports_target(targets, target)
-  return targets.nil? ? target == 'react-native' : targets.include?(target)
+  return targets.class == Array && targets.include?(target)
 end
-
-use_unimodules! # to remove
