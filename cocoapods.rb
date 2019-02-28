@@ -8,10 +8,11 @@ def use_unimodules!(custom_options = {})
   }.deep_merge(custom_options)
 
   modules_paths = options.fetch(:modules_paths)
-  exclude = options.fetch(:exclude)
+  modules_to_exclude = options.fetch(:exclude)
   target = options.fetch(:target)
 
-  unimodules = []
+  unimodules = {}
+  unimodules_duplicates = []
 
   modules_paths.each { |module_path|
     glob_pattern = File.join(module_path, '**', 'unimodule.json')
@@ -22,37 +23,61 @@ def use_unimodules!(custom_options = {})
       platforms = unimodule_json['platforms'] || ['ios']
       targets = unimodule_json['targets'] || ['react-native']
 
-      if unimodule_supports_platform(platforms, 'ios') && unimodule_supports_target(targets, target) then
-        package_name = unimodule_json['name'] || get_package_name(directory)
+      if unimodule_supports_platform(platforms, 'ios') && unimodule_supports_target(targets, target)
+        package_json_path = File.join(directory, 'package.json')
+        package_json = JSON.parse(File.read(package_json_path))
+        package_name = unimodule_json['name'] || package_json['name']
 
-        if !exclude.include?(package_name) then
-          unimodule_config = { "subdirectory" => 'ios' }.merge(unimodule_json.fetch('ios', {}))
+        if !modules_to_exclude.include?(package_name)
+          unimodule_config = { 'subdirectory' => 'ios' }.merge(unimodule_json.fetch('ios', {}))
+          unimodule_version = package_json['version']
 
-          unimodules.push({
-            name: package_name,
-            directory: directory,
-            config: unimodule_config,
-          })
+          if unimodules[package_name]
+            unimodules_duplicates.push(package_name)
+          end
+
+          if !unimodules[package_name] || Gem::Version.new(unimodule_version) >= Gem::Version.new(unimodules[package_name][:version])
+            unimodules[package_name] = {
+              name: package_name,
+              directory: directory,
+              version: unimodule_version,
+              config: unimodule_config,
+              warned: false,
+            }
+          end
         end
       end
     }
   }
 
-  unimodules.sort! { |x,y| x['name'] <=> y['name'] }.each { |unimodule|
+  puts brown 'Installing unimodules:'
+
+  unimodules.values.sort! { |x,y| x[:name] <=> y[:name] }.each { |unimodule|
     directory = unimodule[:directory]
     config = unimodule[:config]
 
     subdirectory = config['subdirectory']
     pod_name = config.fetch('podName', find_pod_name(directory, subdirectory))
+    podspec_directory = "#{directory}/#{subdirectory}" 
 
-    pod "#{pod_name}", path: "#{directory}/#{subdirectory}"
+    puts " #{green unimodule[:name]}#{cyan "@"}#{magenta unimodule[:version]} from #{blue podspec_directory}"
+
+    pod "#{pod_name}", path: podspec_directory
   }
-end
 
-def get_package_name(package_path)
-  package_json_path = File.join(package_path, 'package.json')
-  package_json = JSON.parse(File.read(package_json_path))
-  return package_json['name']
+  puts
+
+  if unimodules_duplicates.length > 0
+    puts brown "Found some duplicated unimodule packages. Installed the ones with the highest version number."
+    puts brown "Make sure following dependencies of your project are resolving to one specific version:"
+
+    puts ' ' + unimodules_duplicates
+      .uniq
+      .map { |package_name| green(package_name) }
+      .join(', ')
+  end
+
+  puts
 end
 
 def find_pod_name(package_path, subdirectory)
@@ -66,4 +91,24 @@ end
 
 def unimodule_supports_target(targets, target)
   return targets.class == Array && targets.include?(target)
+end
+
+def green(message)
+  return "\e[32m#{message}\e[0m"
+end
+
+def brown(message)
+  return "\e[33m#{message}\e[0m"
+end
+
+def blue(message)
+  return "\e[34m#{message}\e[0m"
+end
+
+def magenta(message)
+  return "\e[35m#{message}\e[0m"
+end
+
+def cyan(message)
+  return "\e[36m#{message}\e[0m"
 end
