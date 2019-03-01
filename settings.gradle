@@ -26,9 +26,6 @@ ext.useUnimodules = [
       include ":expo-constants"
       project(":expo-constants").projectDir = new File(rootProject.projectDir, "${nodeModulesPath}/expo-constants/android")
 
-      include ":expo-sensors"
-      project(":expo-sensors").projectDir = new File(rootProject.projectDir, "${nodeModulesPath}/expo-sensors/android")
-
       include ":expo-image-loader-interface"
       project(":expo-image-loader-interface").projectDir = new File(rootProject.projectDir, "${nodeModulesPath}/expo-image-loader-interface/android")
 
