@@ -23,7 +23,7 @@ npm install @unimodules/core
 
 #### Add permission usage description keys to `Info.plist`
 
-In order to submit your app to the App Store, you will need to eventually add these keys to your `Info.plist`. Even if you don't use the APIs described, you need to include the keys because code related to asking the permission will be bundled regardless, and Apple's static analysis tools will detect it and reject your app if the key isn't present. Including the key without using it has no impact to your users. Replace `(YOUR APP NAME)` with your app name below.
+In order to submit your app to the App Store, you will need to eventually add these keys to your `Info.plist`. Even if you don't use the APIs described, you need to include the keys because code related to asking the permission will be bundled regardless, and Apple's static analysis tools will detect it and reject your app if the key isn't present. Including the key without using it has no impact to your users - iOS app permissions are requested at runtime and not listed in the app store listing as they are on Android. Replace `(YOUR APP NAME)` with your app name below.
 
 ```xml
 <key>NSCalendarsUsageDescription</key>
