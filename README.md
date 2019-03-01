@@ -23,7 +23,7 @@ npm install @unimodules/core
 
 #### Add permission usage description keys to `Info.plist`
 
-In order to submit your app to the App Store, you will need to eventually add these keys to your `Info.plist`. Even if you don't use the APIs described, you need to include the keys because code related to asking the permission will be bundled regardless, and Apple's static analysis tools will detect it and reject your app if the key isn't present. Including the key without using it has no impact to your users - iOS app permissions are requested at runtime and not listed in the app store listing as they are on Android. Replace `(YOUR APP NAME)` with your app name below.
+In order to submit your app to the App Store, you will need to eventually add these keys to your `Info.plist`. Even if you don't use the APIs described, you need to include the keys because code related to asking the permission will be bundled regardless, and Apple's static analysis tools will detect it and reject your app if the key isn't present. Including the key without using it has no impact to your users - iOS app permissions are requested at runtime and not listed in the app store listing as they are on Android. Test the permission prompts and customize the message as needed.
 
 ```xml
 <key>NSCalendarsUsageDescription</key>
@@ -57,6 +57,23 @@ In order to submit your app to the App Store, you will need to eventually add th
 - Add `apply from: '../../node_modules/@unimodules/core/build.gradle'` anywhere in `android/app/build.gradle`
 - Update `minSdkVersion` in `android/build.gradle` to 21
 - Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/eb4606e39d5d5e6a764c16acde82198a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
+
+#### Add permissions to AndroidManifest.xml
+
+Add whichever of the following permissions you would like to use in your app to `android/app/src/main`:
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.READ_CONTACTS" />
+<uses-permission android:name="android.permission.READ_CALENDAR" />
+<uses-permission android:name="android.permission.WRITE_CALENDAR" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+```
 
 ## API
 
