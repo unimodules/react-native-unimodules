@@ -1,15 +1,8 @@
 import groovy.json.JsonSlurper
 
 def doesUnimoduleSupportPlatform(Map unimoduleJson, String platform) {
-  def platforms = unimoduleJson.platforms// || ['android']
-
-  if (platforms instanceof Map) {
-    return platforms.containsKey(platform)
-  }
-  if (platforms instanceof List) {
-    return platforms.contains(platform)
-  }
-  return true
+  def platforms = unimoduleJson.platforms
+  return platforms instanceof List && platforms.contains(platform)
 }
 
 def doesUnimoduleSupportTarget(Map unimoduleJson, String target) {
@@ -17,8 +10,9 @@ def doesUnimoduleSupportTarget(Map unimoduleJson, String target) {
   return !targets || targets.contains(target)
 }
 
-def findUnimodules(String target, List exclude, List modulesPaths) {
-  def unimodules = []
+def findUnimodules(String target, List modulesToExclude, List modulesPaths) {
+  def unimodules = [:]
+  def unimodulesDuplicates = []
 
   for (modulesPath in modulesPaths) {
     def moduleConfigPaths = new FileNameFinder().getFileNames(modulesPath, '**/unimodule.json', '')
@@ -29,20 +23,42 @@ def findUnimodules(String target, List exclude, List modulesPaths) {
       def directory = unimoduleConfig.getParent()
       
       if (doesUnimoduleSupportPlatform(unimoduleJson, 'android') && doesUnimoduleSupportTarget(unimoduleJson, target)) {
-        def unimoduleName = unimoduleJson.name
+        def packageJsonFile = new File(directory, 'package.json')
+        def packageJson = new JsonSlurper().parseText(packageJsonFile.text)
+        def unimoduleName = unimoduleJson.name ? unimoduleJson.name : packageJson.name
 
-        if (!exclude.contains(unimoduleName)) {
-          unimodules.add([
-            name: unimoduleJson.name,
-            directory: directory,
-            config: unimoduleJson.platforms instanceof Map && unimoduleJson.platforms,
-          ])
+        if (!modulesToExclude.contains(unimoduleName)) {
+          def platformConfig = [subdirectory: 'android'] << unimoduleJson.get('android', [:])
+          def unimoduleVersion = packageJson.version
+          
+          if (unimodules[unimoduleName]) {
+            unimodulesDuplicates.add(unimoduleName)
+          }
+
+          if (!unimodules[unimoduleName] || VersionNumber.parse(unimoduleVersion) >= VersionNumber.parse(unimodules[unimoduleName].version)) {
+            unimodules[unimoduleName] = [
+              name: unimoduleJson.name,
+              directory: directory,
+              version: unimoduleVersion,
+              config: platformConfig,
+            ]
+          }
         }
       }
     }
   }
+  return [
+    unimodules: unimodules.collect { entry -> entry.value },
+    duplicates: unimodulesDuplicates.unique()
+  ]
+}
 
-  return unimodules
+class Colors {
+  static final String NORMAL          = "\u001B[0m"
+  static final String	RED             = "\u001B[31m"
+  static final String	GREEN           = "\u001B[32m"
+  static final String	YELLOW          = "\u001B[33m"
+  static final String	MAGENTA         = "\u001B[35m"
 }
 
 ext.useUnimodules = { Map customOptions = [] ->
@@ -53,15 +69,32 @@ ext.useUnimodules = { Map customOptions = [] ->
     exclude: [],
   ] << customOptions
 
-  def unimodules = findUnimodules(options.target, options.exclude, options.modulesPaths)
+  def results = findUnimodules(options.target, options.exclude, options.modulesPaths)
+  def unimodules = results.unimodules
+  def duplicates = results.duplicates
+
+  println()
+  println Colors.YELLOW + 'Installing unimodules:' + Colors.NORMAL
 
   for (unimodule in unimodules) {
+    println ' ' + Colors.GREEN + unimodule.name + Colors.YELLOW + '@' + Colors.RED + unimodule.version + Colors.NORMAL + ' from ' + Colors.MAGENTA + unimodule.directory + Colors.NORMAL
+
     if (options.configuration == 'expendency') {
       expendency(unimodule.name)
     } else {
-      Object dependency = project.project(":${unimodule.name}")
+      Object dependency = project.project(':' + unimodule.name)
       project.dependencies.add(options.configuration, dependency, null)
     }
+  }
+
+  if (duplicates.size() > 0) {
+    println()
+    println Colors.YELLOW + 'Found some duplicated unimodule packages. Installed the ones with the highest version number.' + Colors.NORMAL
+    println Colors.YELLOW + 'Make sure following dependencies of your project are resolving to one specific version:' + Colors.NORMAL
+
+    println ' ' + duplicates
+      .collect { unimoduleName -> Colors.GREEN + unimoduleName + Colors.NORMAL }
+      .join(', ')
   }
 }
 
@@ -72,11 +105,11 @@ ext.includeUnimodules = { Map customOptions = [] ->
     exclude: [],
   ] << customOptions
 
-  def unimodules = findUnimodules(options.target, options.exclude, options.modulesPaths)
+  def unimodules = findUnimodules(options.target, options.exclude, options.modulesPaths).unimodules
 
   for (unimodule in unimodules) {
     def config = unimodule.config
-    def subdirectory = config && config instanceof Map ? config.android.subdirectory : 'android'
+    def subdirectory = config.subdirectory
 
     include ":${unimodule.name}"
     project(":${unimodule.name}").projectDir = new File(unimodule.directory, subdirectory)
