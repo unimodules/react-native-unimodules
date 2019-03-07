@@ -1,0 +1,16 @@
+dependencies {
+    api project(':expo-core')
+    api project(':expo-react-native-adapter')
+    api project(':expo-constants-interface')
+    api project(':expo-constants')
+    api project(':expo-sensors-interface')
+    api project(':expo-permissions-interface')
+    api project(':expo-font-interface')
+    api project(':expo-image-loader-interface')
+    api project(':expo-barcode-scanner-interface')
+    api project(':expo-face-detector-interface')
+    api project(':expo-file-system-interface')
+    api project(':expo-camera-interface')
+    api project(':expo-file-system')
+    api project(':expo-permissions')
+}
