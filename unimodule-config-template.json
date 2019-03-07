@@ -1,4 +1,0 @@
-{
-  "platforms": ["ios", "android"],
-  "targets": ["react-native"]
-}
