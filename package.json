@@ -1,6 +1,6 @@
 {
-  "name": "@unimodules/core",
-  "version": "0.2.1",
+  "name": "react-native-unimodules",
+  "version": "0.1.0-rc.0",
   "description": "",
   "main": "index.js",
   "private": false,
