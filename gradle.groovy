@@ -54,11 +54,11 @@ def findUnimodules(String target, List modulesToExclude, List modulesPaths) {
 }
 
 class Colors {
-  static final String NORMAL          = "\u001B[0m"
-  static final String	RED             = "\u001B[31m"
-  static final String	GREEN           = "\u001B[32m"
-  static final String	YELLOW          = "\u001B[33m"
-  static final String	MAGENTA         = "\u001B[35m"
+  static final String NORMAL  = "\u001B[0m"
+  static final String RED     = "\u001B[31m"
+  static final String GREEN   = "\u001B[32m"
+  static final String YELLOW  = "\u001B[33m"
+  static final String MAGENTA = "\u001B[35m"
 }
 
 ext.useUnimodules = { Map customOptions = [] ->
