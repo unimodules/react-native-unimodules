@@ -15,7 +15,8 @@ def findUnimodules(String target, List modulesToExclude, List modulesPaths) {
   def unimodulesDuplicates = []
 
   for (modulesPath in modulesPaths) {
-    def moduleConfigPaths = new FileNameFinder().getFileNames(modulesPath, '**/unimodule.json', '')
+    def baseDir = new File(rootProject.getBuildFile(), modulesPath).toString()
+    def moduleConfigPaths = new FileNameFinder().getFileNames(baseDir, '**/unimodule.json', '')
 
     for (moduleConfigPath in moduleConfigPaths) {
       def unimoduleConfig = new File(moduleConfigPath)
@@ -25,7 +26,7 @@ def findUnimodules(String target, List modulesToExclude, List modulesPaths) {
       if (doesUnimoduleSupportPlatform(unimoduleJson, 'android') && doesUnimoduleSupportTarget(unimoduleJson, target)) {
         def packageJsonFile = new File(directory, 'package.json')
         def packageJson = new JsonSlurper().parseText(packageJsonFile.text)
-        def unimoduleName = unimoduleJson.name ? unimoduleJson.name : packageJson.name
+        def unimoduleName = unimoduleJson.name ?: packageJson.name
 
         if (!modulesToExclude.contains(unimoduleName)) {
           def platformConfig = [subdirectory: 'android'] << unimoduleJson.get('android', [:])
