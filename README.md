@@ -27,27 +27,27 @@ In order to submit your app to the App Store, you will need to eventually add th
 
 ```xml
 <key>NSCalendarsUsageDescription</key>
-<string>Allow (YOUR APP NAME) to access your calendar</string>
+<string>Allow $(PRODUCT_NAME) to access your calendar</string>
 <key>NSCameraUsageDescription</key>
-<string>Allow (YOUR APP NAME) to use the camera</string>
+<string>Allow $(PRODUCT_NAME) to use the camera</string>
 <key>NSContactsUsageDescription</key>
-<string>Allow (YOUR APP NAME) experiences to access your contacts</string>
+<string>Allow $(PRODUCT_NAME) experiences to access your contacts</string>
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>Allow (YOUR APP NAME) to use your location</string>
+<string>Allow $(PRODUCT_NAME) to use your location</string>
 <key>NSLocationAlwaysUsageDescription</key>
-<string>Allow (YOUR APP NAME) to use your location</string>
+<string>Allow $(PRODUCT_NAME) to use your location</string>
 <key>NSLocationWhenInUseUsageDescription</key>
-<string>Allow (YOUR APP NAME) to use your location</string>
+<string>Allow $(PRODUCT_NAME) to use your location</string>
 <key>NSMicrophoneUsageDescription</key>
-<string>Allow (YOUR APP NAME) to access your microphone</string>
+<string>Allow $(PRODUCT_NAME) to access your microphone</string>
 <key>NSMotionUsageDescription</key>
-<string>Allow (YOUR APP NAME) to access your device's accelerometer</string>
+<string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
 <key>NSPhotoLibraryAddUsageDescription</key>
-<string>Give (YOUR APP NAME) periences permission to save photos</string>
+<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
 <key>NSPhotoLibraryUsageDescription</key>
-<string>Give (YOUR APP NAME) periences permission to access your photos</string>
+<string>Give $(PRODUCT_NAME) periences permission to access your photos</string>
 <key>NSRemindersUsageDescription</key>
-<string>Allow (YOUR APP NAME) to access your reminders</string>
+<string>Allow $(PRODUCT_NAME) to access your reminders</string>
 ```
 
 ### Configure Android
