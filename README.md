@@ -1,4 +1,4 @@
-# @unimodules/core
+# react-native-unimodules
 
 This library contains the core Unimodule infrastructure and a collection of Unimodules and interfaces that are commonly depended on by other Unimodules.
 You will need to install this before using libraries from Foundation, like `expo-camera`, `expo-media-library`, and others.
@@ -11,13 +11,13 @@ The easiest way to do this is to initialize a "custom" project with `expo-cli`. 
 ### Install the package
 
 ```bash
-npm install @unimodules/core
+npm install react-native-unimodules
 ```
 
 ### Configure iOS
 
-- Go back to the `ios` directory and open your Podfile, make your Podfile look [like this one](https://gist.github.com/brentvatne/6a1dcb32f6ca3d478eed4c7dc8fbdd24).
-  - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param for this: `use_unimodules!(node_modules_path: '../../../node_modules')`
+- Go back to the `ios` directory and open your Podfile, make your Podfile look [like this one](https://gist.github.com/sjchmiela/6c079f2173938a9a61a7c6f053c45000).
+  - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param for this: `use_unimodules!(modules_paths: ['./path/to/node_modules'])`
 - Run `pod install` again
 - Update your `AppDelegate.h` and `AppDelegate.m` according to [this diff](https://gist.github.com/brentvatne/949d9cc3508cc45f54af5196b3ca497b/revisions).
 
@@ -52,9 +52,9 @@ In order to submit your app to the App Store, you will need to eventually add th
 
 ### Configure Android
 
-- Add `apply from: '../node_modules/@unimodules/core/settings.gradle'` and then `useUnimodules.apply()` to the top of  `android/settings.gradle`
-  - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param for this: `useUnimodules.apply(nodeModulesPath: "../../../node_modules")`
-- Add `apply from: '../../node_modules/@unimodules/core/build.gradle'` anywhere in `android/app/build.gradle`
+- Add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` and then `includeUnimodules()` to the top of  `android/settings.gradle`
+- Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere in `android/app/build.gradle` and then `useUnimodules()` inside `dependencies {}` block.
+- If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param `modulesPaths` for both of these functions: `includeUnimodules([modulesPaths: ['./path/to/node_modules']])`, `useUnimodules([modulesPaths: ['./path/to/node_modules']])`
 - Update `minSdkVersion` in `android/build.gradle` to 21
 - Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/eb4606e39d5d5e6a764c16acde82198a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
 
@@ -87,7 +87,7 @@ import {
   Constants,
   FileSystem,
   Permissions,
-} from '@unimodules/core';
+} from 'react-native-unimodules';
 ```
 
 You can import them directly from the specific Unimodule packag if you like, but your linter may complain for import a transitive dependency.

@@ -65,7 +65,7 @@ class Colors {
 ext.useUnimodules = { Map customOptions = [] ->
   def options = [
     modulesPaths: ['../node_modules'],
-    configuration: 'expendency',
+    configuration: 'unimodule',
     target: 'react-native',
     exclude: [],
   ] << customOptions
@@ -80,7 +80,7 @@ ext.useUnimodules = { Map customOptions = [] ->
   for (unimodule in unimodules) {
     println ' ' + Colors.GREEN + unimodule.name + Colors.YELLOW + '@' + Colors.RED + unimodule.version + Colors.NORMAL + ' from ' + Colors.MAGENTA + unimodule.directory + Colors.NORMAL
 
-    if (options.configuration == 'expendency') {
+    if (options.configuration == 'unimodule') {
       expendency(unimodule.name)
     } else {
       Object dependency = project.project(':' + unimodule.name)
@@ -117,7 +117,7 @@ ext.includeUnimodules = { Map customOptions = [] ->
   }
 }
 
-ext.expendency = { String dep, Closure closure = null ->
+ext.unimodule = { String dep, Closure closure = null ->
   Object dependency = null
 
   if (new File(project.rootProject.projectDir.parentFile, 'package.json').exists()) {
@@ -126,7 +126,7 @@ ext.expendency = { String dep, Closure closure = null ->
   } else {
     // There's no package.json and no pubspec.yaml
     throw new GradleException(
-      "'expo-core.gradle' used in a project that seems to be neither a Flutter nor a React Native project."
+      "'unimodules-core.gradle' used in a project that seems to be neither a Flutter nor a React Native project."
     )
   }
 
