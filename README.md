@@ -5,8 +5,8 @@ You will need to install this before using libraries from Foundation, like `expo
 
 ## Installation
 
-The easiest way to do this is to initialize a "custom" project with `expo-cli`. If you have an existing app, you can follow these steps instead.
-**This project requires that you use Cocoapods on iOS**, to set iot up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://facebook.github.io/react-native/docs/integration-with-existing-apps#3-install-cocoapods).
+The easiest way to do this is to initialize a "bare" project with `expo-cli`. If you have an existing app, you can follow these steps instead.
+**This project requires that you use Cocoapods on iOS**, to set it up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://facebook.github.io/react-native/docs/integration-with-existing-apps#3-install-cocoapods).
 
 ### Install the package
 
@@ -19,7 +19,7 @@ npm install react-native-unimodules
 - Go back to the `ios` directory and open your Podfile, make your Podfile look [like this one](https://gist.github.com/sjchmiela/6c079f2173938a9a61a7c6f053c45000).
   - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param for this: `use_unimodules!(modules_paths: ['./path/to/node_modules'])`
 - Run `pod install` again
-- Update your `AppDelegate.h` and `AppDelegate.m` according to [this diff](https://gist.github.com/brentvatne/949d9cc3508cc45f54af5196b3ca497b/revisions).
+- Update your `AppDelegate.h` and `AppDelegate.m` according to [this diff](https://gist.github.com/brentvatne/95b472aecff2cae7bf980cba3447b97e).
 
 #### Add permission usage description keys to `Info.plist`
 
@@ -57,7 +57,7 @@ In order to submit your app to the App Store, you will need to eventually add th
 - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param `modulesPaths` for both of these functions: `includeUnimodulesProjects([modulesPaths: ['./path/to/node_modules']])`, `addUnimodulesDependencies([modulesPaths: ['./path/to/node_modules']])`
 - You can also customize the configuration of the unimodules dependencies (the default is `implementation`, if you're using Gradle older than 3.0, you will need to set `configuration: "compile"` in `addUnimodulesDependencies`, like: `addUnimodulesDependencies([configuration: "compile"])`)
 - Update `minSdkVersion` in `android/build.gradle` to 21
-- Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/eb4606e39d5d5e6a764c16acde82198a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
+- Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/6762927edef86f024f6f045265476911/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
 
 #### Add permissions to AndroidManifest.xml
 
