@@ -78,7 +78,7 @@ def use_unimodules!(custom_options = {})
     end
   else
     puts
-    puts brown 'Unimodules not found :('
+    puts brown "No unimodules found. Are you sure you've installed JS dependencies before installing pods?"
   end
 
   puts

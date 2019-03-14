@@ -100,7 +100,7 @@ ext.useUnimodules = { Map customOptions = [:] ->
     }
   } else {
     println()
-    println Colors.YELLOW + 'Unimodules not found :(' + Colors.NORMAL
+    println Colors.YELLOW + "No unimodules found. Are you sure you've installed JS dependencies?" + Colors.NORMAL
   }
 }
 
