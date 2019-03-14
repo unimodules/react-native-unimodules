@@ -62,11 +62,11 @@ class Colors {
   static final String MAGENTA = "\u001B[35m"
 }
 
-ext.addUnimoduleDependencies = { Map customOptions = [:] ->
+ext.addUnimodulesDependencies = { Map customOptions = [:] ->
   if (!(new File(project.rootProject.projectDir.parentFile, 'package.json').exists())) {
     // There's no package.json
     throw new GradleException(
-      "'addUnimoduleDependencies()' used in a project that doesn't seem to be a React Native project."
+      "'addUnimodulesDependencies()' is being used in a project that doesn't seem to be a React Native project."
     )
   }
 
@@ -107,7 +107,7 @@ ext.addUnimoduleDependencies = { Map customOptions = [:] ->
   }
 }
 
-ext.includeUnimoduleProjects = { Map customOptions = [:] ->
+ext.includeUnimodulesProjects = { Map customOptions = [:] ->
   def options = [
     modulesPaths: ['../../node_modules'],
     target: 'react-native',
