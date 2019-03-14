@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": false,
   "scripts": {
+    "postinstall": "node ./scripts/postinstall.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
