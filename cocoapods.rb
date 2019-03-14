@@ -15,7 +15,7 @@ def use_unimodules!(custom_options = {})
   unimodules_duplicates = []
 
   modules_paths.each { |module_path|
-    glob_pattern = File.join(module_path, '**', 'unimodule.json')
+    glob_pattern = File.join(module_path, '**/*/**', 'unimodule.json')
 
     Dir.glob(glob_pattern) { |module_config_path|
       unimodule_json = JSON.parse(File.read(module_config_path))
