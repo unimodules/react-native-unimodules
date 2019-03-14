@@ -50,31 +50,35 @@ def use_unimodules!(custom_options = {})
     }
   }
 
-  puts brown 'Installing unimodules:'
+  if unimodules.values.length > 0
+    puts brown 'Installing unimodules:'
 
-  unimodules.values.sort! { |x,y| x[:name] <=> y[:name] }.each { |unimodule|
-    directory = unimodule[:directory]
-    config = unimodule[:config]
+    unimodules.values.sort! { |x,y| x[:name] <=> y[:name] }.each { |unimodule|
+      directory = unimodule[:directory]
+      config = unimodule[:config]
 
-    subdirectory = config['subdirectory']
-    pod_name = config.fetch('podName', find_pod_name(directory, subdirectory))
-    podspec_directory = "#{directory}/#{subdirectory}" 
+      subdirectory = config['subdirectory']
+      pod_name = config.fetch('podName', find_pod_name(directory, subdirectory))
+      podspec_directory = "#{directory}/#{subdirectory}"
 
-    puts " #{green unimodule[:name]}#{cyan "@"}#{magenta unimodule[:version]} from #{blue podspec_directory}"
+      puts " #{green unimodule[:name]}#{cyan "@"}#{magenta unimodule[:version]} from #{blue podspec_directory}"
 
-    pod "#{pod_name}", path: podspec_directory
-  }
+      pod "#{pod_name}", path: podspec_directory
+    }
 
-  puts
+    if unimodules_duplicates.length > 0
+      puts
+      puts brown "Found some duplicated unimodule packages. Installed the ones with the highest version number."
+      puts brown "Make sure following dependencies of your project are resolving to one specific version:"
 
-  if unimodules_duplicates.length > 0
-    puts brown "Found some duplicated unimodule packages. Installed the ones with the highest version number."
-    puts brown "Make sure following dependencies of your project are resolving to one specific version:"
-
-    puts ' ' + unimodules_duplicates
-      .uniq
-      .map { |package_name| green(package_name) }
-      .join(', ')
+      puts ' ' + unimodules_duplicates
+        .uniq
+        .map { |package_name| green(package_name) }
+        .join(', ')
+    end
+  else
+    puts
+    puts brown 'Unimodules not found :('
   end
 
   puts

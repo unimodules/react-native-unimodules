@@ -22,7 +22,7 @@ def findUnimodules(String target, List modulesToExclude, List modulesPaths) {
       def unimoduleConfig = new File(moduleConfigPath)
       def unimoduleJson = new JsonSlurper().parseText(unimoduleConfig.text)
       def directory = unimoduleConfig.getParent()
-      
+
       if (doesUnimoduleSupportPlatform(unimoduleJson, 'android') && doesUnimoduleSupportTarget(unimoduleJson, target)) {
         def packageJsonFile = new File(directory, 'package.json')
         def packageJson = new JsonSlurper().parseText(packageJsonFile.text)
@@ -31,7 +31,7 @@ def findUnimodules(String target, List modulesToExclude, List modulesPaths) {
         if (!modulesToExclude.contains(unimoduleName)) {
           def platformConfig = [subdirectory: 'android'] << unimoduleJson.get('android', [:])
           def unimoduleVersion = packageJson.version
-          
+
           if (unimodules[unimoduleName]) {
             unimodulesDuplicates.add(unimoduleName)
           }
@@ -62,9 +62,9 @@ class Colors {
   static final String MAGENTA = "\u001B[35m"
 }
 
-ext.useUnimodules = { Map customOptions = [] ->
+ext.useUnimodules = { Map customOptions = [:] ->
   def options = [
-    modulesPaths: ['../node_modules'],
+    modulesPaths: ['../../node_modules'],
     configuration: 'unimodule',
     target: 'react-native',
     exclude: [],
@@ -74,34 +74,39 @@ ext.useUnimodules = { Map customOptions = [] ->
   def unimodules = results.unimodules
   def duplicates = results.duplicates
 
-  println()
-  println Colors.YELLOW + 'Installing unimodules:' + Colors.NORMAL
-
-  for (unimodule in unimodules) {
-    println ' ' + Colors.GREEN + unimodule.name + Colors.YELLOW + '@' + Colors.RED + unimodule.version + Colors.NORMAL + ' from ' + Colors.MAGENTA + unimodule.directory + Colors.NORMAL
-
-    if (options.configuration == 'unimodule') {
-      expendency(unimodule.name)
-    } else {
-      Object dependency = project.project(':' + unimodule.name)
-      project.dependencies.add(options.configuration, dependency, null)
-    }
-  }
-
-  if (duplicates.size() > 0) {
+  if (unimodules.size() > 0) {
     println()
-    println Colors.YELLOW + 'Found some duplicated unimodule packages. Installed the ones with the highest version number.' + Colors.NORMAL
-    println Colors.YELLOW + 'Make sure following dependencies of your project are resolving to one specific version:' + Colors.NORMAL
+    println Colors.YELLOW + 'Installing unimodules:' + Colors.NORMAL
 
-    println ' ' + duplicates
-      .collect { unimoduleName -> Colors.GREEN + unimoduleName + Colors.NORMAL }
-      .join(', ')
+    for (unimodule in unimodules) {
+      println ' ' + Colors.GREEN + unimodule.name + Colors.YELLOW + '@' + Colors.RED + unimodule.version + Colors.NORMAL + ' from ' + Colors.MAGENTA + unimodule.directory + Colors.NORMAL
+
+      if (options.configuration == 'unimodule') {
+        expendency(unimodule.name)
+      } else {
+        Object dependency = project.project(':' + unimodule.name)
+        project.dependencies.add(options.configuration, dependency, null)
+      }
+    }
+
+    if (duplicates.size() > 0) {
+      println()
+      println Colors.YELLOW + 'Found some duplicated unimodule packages. Installed the ones with the highest version number.' + Colors.NORMAL
+      println Colors.YELLOW + 'Make sure following dependencies of your project are resolving to one specific version:' + Colors.NORMAL
+
+      println ' ' + duplicates
+        .collect { unimoduleName -> Colors.GREEN + unimoduleName + Colors.NORMAL }
+        .join(', ')
+    }
+  } else {
+    println()
+    println Colors.YELLOW + 'Unimodules not found :(' + Colors.NORMAL
   }
 }
 
-ext.includeUnimodules = { Map customOptions = [] ->
+ext.includeUnimodules = { Map customOptions = [:] ->
   def options = [
-    modulesPaths: ['../node_modules'],
+    modulesPaths: ['../../node_modules'],
     target: 'react-native',
     exclude: [],
   ] << customOptions
