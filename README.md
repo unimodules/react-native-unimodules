@@ -52,9 +52,10 @@ In order to submit your app to the App Store, you will need to eventually add th
 
 ### Configure Android
 
-- Add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` and then `includeUnimodules()` to the top of  `android/settings.gradle`
-- Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere in `android/app/build.gradle` and then `useUnimodules()` inside `dependencies {}` block.
-- If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param `modulesPaths` for both of these functions: `includeUnimodules([modulesPaths: ['./path/to/node_modules']])`, `useUnimodules([modulesPaths: ['./path/to/node_modules']])`
+- Add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` and then `includeUnimodulesProjects()` to the top of  `android/settings.gradle`
+- Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere in `android/app/build.gradle` and then `addUnimodulesDependencies()` inside `dependencies {}` block.
+- If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param `modulesPaths` for both of these functions: `includeUnimodulesProjects([modulesPaths: ['./path/to/node_modules']])`, `addUnimodulesDependencies([modulesPaths: ['./path/to/node_modules']])`
+- You can also customize the configuration of the unimodules dependencies (the default is `implementation`, if you're using Gradle older than 3.0, you will need to set `configuration: "compile"` in `addUnimodulesDependencies`, like: `addUnimodulesDependencies([configuration: "compile"])`)
 - Update `minSdkVersion` in `android/build.gradle` to 21
 - Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/eb4606e39d5d5e6a764c16acde82198a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
 

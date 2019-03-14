@@ -62,10 +62,17 @@ class Colors {
   static final String MAGENTA = "\u001B[35m"
 }
 
-ext.useUnimodules = { Map customOptions = [:] ->
+ext.addUnimodulesDependencies = { Map customOptions = [:] ->
+  if (!(new File(project.rootProject.projectDir.parentFile, 'package.json').exists())) {
+    // There's no package.json
+    throw new GradleException(
+      "'addUnimodulesDependencies()' is being used in a project that doesn't seem to be a React Native project."
+    )
+  }
+
   def options = [
     modulesPaths: ['../../node_modules'],
-    configuration: 'unimodule',
+    configuration: 'implementation',
     target: 'react-native',
     exclude: [],
   ] << customOptions
@@ -81,12 +88,8 @@ ext.useUnimodules = { Map customOptions = [:] ->
     for (unimodule in unimodules) {
       println ' ' + Colors.GREEN + unimodule.name + Colors.YELLOW + '@' + Colors.RED + unimodule.version + Colors.NORMAL + ' from ' + Colors.MAGENTA + unimodule.directory + Colors.NORMAL
 
-      if (options.configuration == 'unimodule') {
-        expendency(unimodule.name)
-      } else {
-        Object dependency = project.project(':' + unimodule.name)
-        project.dependencies.add(options.configuration, dependency, null)
-      }
+      Object dependency = project.project(':' + unimodule.name)
+      project.dependencies.add(options.configuration, dependency, null)
     }
 
     if (duplicates.size() > 0) {
@@ -104,7 +107,7 @@ ext.useUnimodules = { Map customOptions = [:] ->
   }
 }
 
-ext.includeUnimodules = { Map customOptions = [:] ->
+ext.includeUnimodulesProjects = { Map customOptions = [:] ->
   def options = [
     modulesPaths: ['../../node_modules'],
     target: 'react-native',
@@ -120,22 +123,4 @@ ext.includeUnimodules = { Map customOptions = [:] ->
     include ":${unimodule.name}"
     project(":${unimodule.name}").projectDir = new File(unimodule.directory, subdirectory)
   }
-}
-
-ext.unimodule = { String dep, Closure closure = null ->
-  Object dependency = null
-
-  if (new File(project.rootProject.projectDir.parentFile, 'package.json').exists()) {
-    // Parent directory of the android project has package.json -- probably React Native
-    dependency = project.project(":$dep")
-  } else {
-    // There's no package.json and no pubspec.yaml
-    throw new GradleException(
-      "'unimodules-core.gradle' used in a project that seems to be neither a Flutter nor a React Native project."
-    )
-  }
-
-  String configurationName = project.configurations.findByName("implementation") ? "implementation" : "compile"
-
-  project.dependencies.add(configurationName, dependency, closure)
 }
