@@ -52,9 +52,9 @@ In order to submit your app to the App Store, you will need to eventually add th
 
 ### Configure Android
 
-- Add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` and then `includeUnimodules()` to the top of  `android/settings.gradle`
-- Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere in `android/app/build.gradle` and then `useUnimodules()` inside `dependencies {}` block.
-- If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param `modulesPaths` for both of these functions: `includeUnimodules([modulesPaths: ['./path/to/node_modules']])`, `useUnimodules([modulesPaths: ['./path/to/node_modules']])`
+- Add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` and then `includeUnimoduleProjects()` to the top of  `android/settings.gradle`
+- Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere in `android/app/build.gradle` and then `addUnimoduleDependencies()` inside `dependencies {}` block.
+- If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param `modulesPaths` for both of these functions: `includeUnimoduleProjects([modulesPaths: ['./path/to/node_modules']])`, `addUnimoduleProjects([modulesPaths: ['./path/to/node_modules']])`
 - Update `minSdkVersion` in `android/build.gradle` to 21
 - Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/eb4606e39d5d5e6a764c16acde82198a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
 
