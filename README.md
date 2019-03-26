@@ -22,6 +22,7 @@ npm install react-native-unimodules
   - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param for this: `use_unimodules!(modules_paths: ['./path/to/node_modules'])`
 - Run `pod install` again
 - Update your `AppDelegate.h` and `AppDelegate.m` according to [this diff](https://gist.github.com/brentvatne/94960dacb343310b76be9cc157d90049/revisions).
+  - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this diff](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
 
 #### Add permission usage description keys to `Info.plist`
 
