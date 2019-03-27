@@ -59,7 +59,8 @@ In order to submit your app to the App Store, you will need to eventually add th
 - Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere in `android/app/build.gradle` and then `addUnimodulesDependencies()` inside `dependencies {}` block.
 - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param `modulesPaths` for both of these functions: `includeUnimodulesProjects([modulesPaths: ['./path/to/node_modules']])`, `addUnimodulesDependencies([modulesPaths: ['./path/to/node_modules']])`
 - You can also customize the configuration of the unimodules dependencies (the default is `implementation`, if you're using Gradle older than 3.0, you will need to set `configuration: "compile"` in `addUnimodulesDependencies`, like: `addUnimodulesDependencies([configuration: "compile"])`)
-- Update `minSdkVersion` in `android/build.gradle` to 21
+- We recommend using Java 1.8, you can set this in `android/app/build.gradle` [like this](https://github.com/expo/expo/commit/e175f870418fc69e8c129168118264439d73d7cc).
+- Update `minSdkVersion` in `android/build.gradle` to `21`.
 - Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/6762927edef86f024f6f045265476911/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
 
 #### Add permissions to AndroidManifest.xml
