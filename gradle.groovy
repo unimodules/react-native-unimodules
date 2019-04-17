@@ -9,6 +9,7 @@ class Unimodule {
   List androidPackages
   String directory
   String version
+  String androidGroup
   String androidSubdirectory
 
   boolean supportPlatform(String platform) {
@@ -34,6 +35,27 @@ def readPackageFromJavaFile(String file) {
   }
 
   throw new GradleException("File $file does not include package declaration")
+}
+
+def readFromBuildGradle(String file) {
+  def gradleFile = new File(file)
+  if (!gradleFile.exists()) {
+    return [:]
+  }
+  def fileReader = new BufferedReader(new FileReader(gradleFile))
+  def result = [:]
+  for (def line = fileReader.readLine(); line != null; line = fileReader.readLine()) {
+    def versionMatch = line.trim() =~ /^version ?= ?'([0-9]+.[0-9]+.[0-9]+)'$/
+    def groupMatch = line.trim() =~ /^group ?= ?'([a-zA-Z]+.[a-zA-Z]+.[a-zA-Z]+)'$/
+    if (versionMatch.size() == 1 && versionMatch[0].size() == 2) {
+      result.version = versionMatch[0][1]
+    }
+    if (groupMatch.size() == 1 && groupMatch[0].size() == 2) {
+      result.group = groupMatch[0][1]
+    }
+  }
+  fileReader.close()
+  return result
 }
 
 def findDefaultBasePackage(String packageDir) {
@@ -89,7 +111,6 @@ def generateBasePackageList(List<Unimodule> unimodules) {
 
 
 def findUnimodules(String target, List exclude, List modulesPaths) {
-
   def unimodules = [:]
   def unimodulesDuplicates = []
 
@@ -101,13 +122,15 @@ def findUnimodules(String target, List exclude, List modulesPaths) {
       def unimoduleConfig = new File(moduleConfigPath)
       def unimoduleJson = new JsonSlurper().parseText(unimoduleConfig.text)
       def directory = unimoduleConfig.getParent()
+      def buildGradle = readFromBuildGradle(new File(directory, "android/build.gradle").toString())
       def packageJsonFile = new File(directory, 'package.json')
       def packageJson = new JsonSlurper().parseText(packageJsonFile.text)
 
       def unimodule = new Unimodule()
       unimodule.name = unimoduleJson.name ?: packageJson.name
       unimodule.directory = directory
-      unimodule.version = packageJson.version ?: "UNVERSIONED"
+      unimodule.version = buildGradle.version ?: packageJson.version ?: "UNVERSIONED"
+      unimodule.androidGroup = buildGradle.group ?: "org.unimodules"
       unimodule.androidSubdirectory = unimoduleJson.android?.subdirectory ?: "android"
       unimodule.platforms = unimoduleJson.platforms != null ? unimoduleJson.platforms : []
       assert unimodule.platforms instanceof List
@@ -146,7 +169,7 @@ class Colors {
   static final String MAGENTA = "\u001B[35m"
 }
 
-ext.addUnimodulesDependencies = { Map customOptions = [:] ->
+def addUnimodulesDependencies(String target, List exclude, List modulesPaths, Closure<Boolean> addUnimodule) {
   if (!(new File(project.rootProject.projectDir.parentFile, 'package.json').exists())) {
     // There's no package.json
     throw new GradleException(
@@ -154,14 +177,7 @@ ext.addUnimodulesDependencies = { Map customOptions = [:] ->
     )
   }
 
-  def options = [
-      modulesPaths : ['../../node_modules'],
-      configuration: 'implementation',
-      target       : 'react-native',
-      exclude      : [],
-  ] << customOptions
-
-  def results = findUnimodules(options.target, options.exclude, options.modulesPaths)
+  def results = findUnimodules(target, exclude, modulesPaths)
   def unimodules = results.unimodules
   def duplicates = results.duplicates
   generateBasePackageList(unimodules)
@@ -171,9 +187,7 @@ ext.addUnimodulesDependencies = { Map customOptions = [:] ->
     println Colors.YELLOW + 'Installing unimodules:' + Colors.NORMAL
     for (unimodule in unimodules) {
       println ' ' + Colors.GREEN + unimodule.name + Colors.YELLOW + '@' + Colors.RED + unimodule.version + Colors.NORMAL + ' from ' + Colors.MAGENTA + unimodule.directory + Colors.NORMAL
-
-      Object dependency = project.project(':' + unimodule.name)
-      project.dependencies.add(options.configuration, dependency, null)
+      addUnimodule(unimodule)
     }
 
     if (duplicates.size() > 0) {
@@ -189,6 +203,36 @@ ext.addUnimodulesDependencies = { Map customOptions = [:] ->
     println()
     println Colors.YELLOW + "No unimodules found. Are you sure you've installed JS dependencies?" + Colors.NORMAL
   }
+}
+
+ext.addUnimodulesDependencies = { Map customOptions = [:] ->
+  def options = [
+      modulesPaths : ['../../node_modules'],
+      configuration: 'implementation',
+      target       : 'react-native',
+      exclude      : [],
+  ] << customOptions
+
+  addUnimodulesDependencies(options.target, options.exclude, options.modulesPaths, {unimodule ->
+    Object dependency = project.project(':' + unimodule.name)
+    project.dependencies.add(options.configuration, dependency)
+  })
+}
+
+ext.addMavenUnimodulesDependencies = { Map customOptions = [:] ->
+  def options = [
+      modulesPaths : ['../../node_modules'],
+      configuration: 'implementation',
+      target       : 'react-native',
+      exclude      : [],
+  ] << customOptions
+
+  addUnimodulesDependencies(options.target, options.exclude, options.modulesPaths, {unimodule ->
+    project.dependencies.add(
+        options.configuration,
+        "${unimodule.androidGroup}:${unimodule.name}:${unimodule.version}"
+    )
+  })
 }
 
 ext.includeUnimodulesProjects = { Map customOptions = [:] ->
