@@ -140,7 +140,7 @@ def findUnimodules(String target, List exclude, List modulesPaths) {
           unimoduleJson.android.packages : findDefaultBasePackage(directory)
       assert unimodule.androidPackages instanceof List
 
-      if (unimodule.supportPlatform('android') && unimodule.supportTarget(target)) {
+      if (unimodule.supportsPlatform('android') && unimodule.supportsTarget(target)) {
         if (!exclude.contains(unimodule.name)) {
           if (unimodules[unimodule.name]) {
             unimodulesDuplicates.add(unimodule.name)
