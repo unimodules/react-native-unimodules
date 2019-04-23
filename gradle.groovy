@@ -16,7 +16,7 @@ class Unimodule {
     return platforms instanceof List && platforms.contains(platform)
   }
 
-  boolean supportTarget(String target) {
+  boolean supportsTarget(String target) {
     return targets.size() == 0 || targets.contains(target)
   }
 }
