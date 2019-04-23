@@ -29,7 +29,7 @@ def readPackageFromJavaFile(String file) {
     javaFileContent = javaFileReader.readLine()
   }
   javaFileReader.close()
-  def match = javaFileContent =~ /^package ([0-9a-zA-Z.]*);$/
+  def match = javaFileContent =~ /^package ([0-9a-zA-Z._]*);$/
   if (match.size() == 1 && match[0].size() == 2) {
     return match[0][1]
   }
