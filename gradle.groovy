@@ -12,7 +12,7 @@ class Unimodule {
   String androidGroup
   String androidSubdirectory
 
-  boolean supportPlatform(String platform) {
+  boolean supportsPlatform(String platform) {
     return platforms instanceof List && platforms.contains(platform)
   }
 
