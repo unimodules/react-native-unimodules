@@ -57,6 +57,11 @@ escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
+expo-app-loader-provider@~4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/expo-app-loader-provider/-/expo-app-loader-provider-4.0.0.tgz#fb875df95dcc009185cec8b2bd66e16a2f5a3dfa"
+  integrity sha512-0NYm/wFgyTcZP9OFl622xCdaWCZaW2Sl9wtpoCG5Sri/85/gLAA3SQGiS8PAqFTCENs9DEuENf1qPs85wh9xYA==
+
 expo-asset@~4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-4.0.0.tgz#41f8de836b0e1426dd4ae461cffbcaad0fdc4e15"
