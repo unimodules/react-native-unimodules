@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "",
   "main": "index.js",
+  "types": "index.d.ts",
   "private": false,
   "scripts": {
     "postinstall": "node ./scripts/postinstall.js",
