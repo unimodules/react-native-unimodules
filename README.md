@@ -61,7 +61,7 @@ In order to submit your app to the App Store, you will need to eventually add th
 - You can also customize the configuration of the unimodules dependencies (the default is `implementation`, if you're using Gradle older than 3.0, you will need to set `configuration: "compile"` in `addUnimodulesDependencies`, like: `addUnimodulesDependencies([configuration: "compile"])`)
 - We recommend using Java 1.8, you can set this in `android/app/build.gradle` [like this](https://github.com/expo/expo/commit/e175f870418fc69e8c129168118264439d73d7cc).
 - Update `minSdkVersion` in `android/build.gradle` to `21`.
-- Update your `MainApplication.java` to according to [this diff](https://gist.github.com/brentvatne/6762927edef86f024f6f045265476911/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
+- Update your `MainApplication.java` to according to [this diff](https://gist.github.com/tsapeta/9e50a4c2c0083fe8e578959526bfbed3/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
 
 #### Add permissions to AndroidManifest.xml
 
