@@ -1,4 +1,6 @@
 require 'json'
+require 'pathname'
+require 'optparse'
 
 def use_unimodules!(custom_options = {})
   options = {
@@ -14,8 +16,11 @@ def use_unimodules!(custom_options = {})
   unimodules = {}
   unimodules_duplicates = []
 
+  project_directory = find_project_directory()
+
   modules_paths.each { |module_path|
-    glob_pattern = File.join(module_path, '**/*/**', 'unimodule.json')
+    canonical_module_path = Pathname.new(File.join(project_directory, module_path)).cleanpath
+    glob_pattern = File.join(canonical_module_path, '**/*/**', 'unimodule.json')
 
     Dir.glob(glob_pattern) { |module_config_path|
       unimodule_json = JSON.parse(File.read(module_config_path))
@@ -59,7 +64,7 @@ def use_unimodules!(custom_options = {})
 
       subdirectory = config['subdirectory']
       pod_name = config.fetch('podName', find_pod_name(directory, subdirectory))
-      podspec_directory = "#{directory}/#{subdirectory}"
+      podspec_directory = Pathname.new("#{directory}/#{subdirectory}").relative_path_from(project_directory)
 
       puts " #{green unimodule[:name]}#{cyan "@"}#{magenta unimodule[:version]} from #{blue podspec_directory}"
 
@@ -82,6 +87,16 @@ def use_unimodules!(custom_options = {})
   end
 
   puts
+end
+
+def find_project_directory()
+  project_directory = Pathname.new(File.expand_path('.'))
+
+  OptionParser.new do |opt|
+    opt.on('--project-directory PROJECT_DIRECTORY') { |option| project_directory = Pathname.new(File.expand_path(option)) }
+  end.parse!
+
+  return project_directory
 end
 
 def find_pod_name(package_path, subdirectory)
