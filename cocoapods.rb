@@ -16,7 +16,7 @@ def use_unimodules!(custom_options = {})
   unimodules = {}
   unimodules_duplicates = []
 
-  project_directory = find_project_directory()
+  project_directory = Pod::Config.instance.project_root
 
   modules_paths.each { |module_path|
     canonical_module_path = Pathname.new(File.join(project_directory, module_path)).cleanpath
@@ -87,16 +87,6 @@ def use_unimodules!(custom_options = {})
   end
 
   puts
-end
-
-def find_project_directory()
-  project_directory = Pathname.new(File.expand_path('.'))
-
-  OptionParser.new do |opt|
-    opt.on('--project-directory PROJECT_DIRECTORY') { |option| project_directory = Pathname.new(File.expand_path(option)) }
-  end.parse!
-
-  return project_directory
 end
 
 def find_pod_name(package_path, subdirectory)
