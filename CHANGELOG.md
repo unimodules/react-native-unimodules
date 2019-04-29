@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.1
+
+### 🐛 Bug fixes
+
+- Fixed TypeScript definitions of common unimodules not being exported. Thanks [@saadq](https://github.com/saadq)! ([#24](https://github.com/unimodules/react-native-unimodules/pull/24))
+- Fixed automatic installation script not finding unimodules when using CocoaPods' `--project-directory` flag. ([#31](https://github.com/unimodules/react-native-unimodules/pull/31))
+
 ## 0.3.0
 
 ### 🎉 New features
