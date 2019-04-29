@@ -95,7 +95,7 @@ import {
 } from 'react-native-unimodules';
 ```
 
-You can import them directly from the specific Unimodule packag if you like, but your linter may complain for import a transitive dependency.
+You can import them directly from the specific Unimodule package if you like, but your linter may complain about importing a transitive dependency.
 
 ```js
 import * as Permissions from 'expo-permissions';
