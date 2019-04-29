@@ -34,7 +34,7 @@ In order to submit your app to the App Store, you will need to eventually add th
 <key>NSCameraUsageDescription</key>
 <string>Allow $(PRODUCT_NAME) to use the camera</string>
 <key>NSContactsUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) experiences to access your contacts</string>
+<string>Allow $(PRODUCT_NAME) to access your contacts</string>
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 <string>Allow $(PRODUCT_NAME) to use your location</string>
 <key>NSLocationAlwaysUsageDescription</key>
@@ -46,9 +46,9 @@ In order to submit your app to the App Store, you will need to eventually add th
 <key>NSMotionUsageDescription</key>
 <string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
 <key>NSPhotoLibraryAddUsageDescription</key>
-<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
+<string>Give $(PRODUCT_NAME) permission to save photos</string>
 <key>NSPhotoLibraryUsageDescription</key>
-<string>Give $(PRODUCT_NAME) periences permission to access your photos</string>
+<string>Give $(PRODUCT_NAME) permission to access your photos</string>
 <key>NSRemindersUsageDescription</key>
 <string>Allow $(PRODUCT_NAME) to access your reminders</string>
 ```
