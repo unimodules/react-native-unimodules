@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@unimodules/core@~1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-1.0.0.tgz#1d7e1c2fcc3d7b996339a8d5321ea0f149af94ed"
-  integrity sha512-vITn6SLpeHzbao6kyv9yFjuLkADvZw7pMjEBeKIu2p5U3yd5PLj2PMOTpEPQCvEFswkVHoxXk25TXJoRHkwcOw==
+"@unimodules/core@~2.0.0-alpha.0":
+  version "2.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-2.0.0-alpha.0.tgz#058a105a8482862f3ed1c5018943fb89520ff2a5"
+  integrity sha512-ZYKfEJ1o5b4lJ11NZFQ+WohrbW6twQPoMrW2BVWsAaufRM5kw5GAf41RnROQ8UzkxTgRrO/HAlVVknaI7OjAgQ==
   dependencies:
     compare-versions "^3.4.0"
 
-"@unimodules/react-native-adapter@~1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@unimodules/react-native-adapter/-/react-native-adapter-1.0.0.tgz#e629bf42a3383768a780d25f38d33c0d1c27ecb7"
-  integrity sha512-7o4P5kocGzaO5GLo1ysa+nGsSjMPQwkvqkaLuUR7eZFfOErAKrtj3WGhJgVIfH7VQFOvBIhitjqc/tQYhMDbJg==
+"@unimodules/react-native-adapter@~2.0.0-alpha.0":
+  version "2.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@unimodules/react-native-adapter/-/react-native-adapter-2.0.0-alpha.0.tgz#b631d47e01eea4ff3b1da2c86713f8148479bfeb"
+  integrity sha512-x7jvqndkaPgjMurb96sTZNxZnzbRoOFuhFfZ9YGTWQO5cNugH1wuq5oVW2wMIF+8X0DOkhFd1xzwFlAh1wfe1A==
   dependencies:
     invariant "^2.2.4"
     lodash.omit "^4.5.0"
