@@ -2,21 +2,20 @@
 # yarn lockfile v1
 
 
-"@unimodules/core@~2.0.0-alpha.0":
-  version "2.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-2.0.0-alpha.0.tgz#058a105a8482862f3ed1c5018943fb89520ff2a5"
-  integrity sha512-ZYKfEJ1o5b4lJ11NZFQ+WohrbW6twQPoMrW2BVWsAaufRM5kw5GAf41RnROQ8UzkxTgRrO/HAlVVknaI7OjAgQ==
+"@unimodules/core@~2.0.0-rc.1":
+  version "2.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-2.0.0-rc.1.tgz#a54c4f15751ac6bd8127a0d7108838dd544a4196"
+  integrity sha512-L1uErsOzPa11ieAFn0IYFrhjmffjfCXjvcYRnIkenvxYjwQqWUaYIdzCudhZpSWWggTexGhh58OSmigduNdkpQ==
   dependencies:
     compare-versions "^3.4.0"
 
-"@unimodules/react-native-adapter@~2.0.0-alpha.0":
-  version "2.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@unimodules/react-native-adapter/-/react-native-adapter-2.0.0-alpha.0.tgz#b631d47e01eea4ff3b1da2c86713f8148479bfeb"
-  integrity sha512-x7jvqndkaPgjMurb96sTZNxZnzbRoOFuhFfZ9YGTWQO5cNugH1wuq5oVW2wMIF+8X0DOkhFd1xzwFlAh1wfe1A==
+"@unimodules/react-native-adapter@~2.0.0-rc.1":
+  version "2.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@unimodules/react-native-adapter/-/react-native-adapter-2.0.0-rc.1.tgz#9d6e9b41b4b5047fe01662cd66a774ef3e1216d2"
+  integrity sha512-LTPI/W7/grnW09gGw03akhqOG+46/EI7kcJrT+g6AOuPAPV6jgQBHdvg3zwqVrtwyJzfJXrNCOwxPi449eO/mQ==
   dependencies:
     invariant "^2.2.4"
-    lodash.omit "^4.5.0"
-    lodash.pick "^4.4.0"
+    lodash "^4.5.0"
     prop-types "^15.6.1"
 
 ansi-styles@^3.2.1:
@@ -57,37 +56,37 @@ escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-expo-app-loader-provider@~4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/expo-app-loader-provider/-/expo-app-loader-provider-4.0.0.tgz#fb875df95dcc009185cec8b2bd66e16a2f5a3dfa"
-  integrity sha512-0NYm/wFgyTcZP9OFl622xCdaWCZaW2Sl9wtpoCG5Sri/85/gLAA3SQGiS8PAqFTCENs9DEuENf1qPs85wh9xYA==
+expo-app-loader-provider@~5.0.0-rc.0:
+  version "5.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/expo-app-loader-provider/-/expo-app-loader-provider-5.0.0-rc.0.tgz#997a3c422bc9e993c4f3a5570a8049a1126ade5c"
+  integrity sha512-gTwZQoNAPryhDT0eMR9cF7oHCQgnihMAmC5Hhn8k0zhZx2SnicFDc9IeGu0oyT2Y9wDysSyoZdRwPJG0UDId/Q==
 
-expo-asset@~4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-4.0.0.tgz#41f8de836b0e1426dd4ae461cffbcaad0fdc4e15"
-  integrity sha512-oFIaq1V3D23wos3Lc1+3ABAAbXTytVDCXF0lTSDNsCEGHk+rt2WUedD0FL+RNw+C4zG7aqxI6cPaDNc+4lyKdA==
+expo-asset@~5.0.0-rc.0:
+  version "5.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-5.0.0-rc.0.tgz#ff641ee60e94a03f2ef870d62e1ac4945b9ef98f"
+  integrity sha512-M9DQdzZcLe3ip4AwQb4wB03D3wSWvVxicA5+zeiG76CB85Hbjjv8WOvfdYeM/REIMchOW/ROafQwj8n9iqFUVw==
   dependencies:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
-expo-constants@~4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-4.0.0.tgz#6c8d7cda32524ef7d13a9a5fcfd33638cf011622"
-  integrity sha512-bMzEgPJ431up3gOA9+MToGU09qG1UrX1MG99xP1w6eRjIb3XX4Fp0jx2eF5AfsS5gosMb78gLShwhdMbcbR8Sw==
+expo-constants@~5.0.0-rc.0:
+  version "5.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-5.0.0-rc.0.tgz#f20e64f0efe99f4c2b2e3fe30b74170f3af0d1e0"
+  integrity sha512-pQZG3tQBIx8B05W4/EVAsxWA9k9cw0TCpRKcnc51AKnxCM0sBqIrvMUmAEfLS9ezFCPvZueEgj9URanbh8ZKpA==
   dependencies:
     ua-parser-js "^0.7.19"
 
-expo-file-system@~4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-4.0.0.tgz#b9d2b7d70bfa0690213f7c291829825e916702ce"
-  integrity sha512-t/DFoZ43AIjMUq06/ntK2+3gQwnfaJW1nmnAocCwccHh2Eo+Cer3qVMjJ5vcqmonkrcQ7Ycuv4hw/btqtVhCYQ==
+expo-file-system@~5.0.0-rc.0:
+  version "5.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-5.0.0-rc.0.tgz#161310e43d5ef8ece758f4ce4a21090730da0d9f"
+  integrity sha512-zrHejrOs4x6GwskYgu93XvJGd2MQji7HQTX9tbjMBvFYzxI+jDR/Ls/MZSfGx6LAKHsoR6gMFcu57EVWwoQNBA==
   dependencies:
     uuid-js "^0.7.5"
 
-expo-permissions@~4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-4.0.0.tgz#288701e40ee10973deb40d3d965e84da6783cdc6"
-  integrity sha512-OdO5qXnC1oU4bF3ItTatOEbeIGU1986OuT2bUO8dxu8/1ycc+s7w9ayOguFTFWGLINrKmjI7StDxl5KnaW6j3Q==
+expo-permissions@~5.0.0-rc.0:
+  version "5.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-5.0.0-rc.0.tgz#c115278e9034166a3852398190575b6294a77980"
+  integrity sha512-tNi+0MzMOZRaTzUdlVVNuONFxocJcDT5ZpxQUaLbHOoOgTKTPUXL3prN4a1EAfVdKOaY+yONRzP+fy8BJB5cuQ==
 
 has-flag@^3.0.0:
   version "3.0.0"
@@ -106,15 +105,10 @@ invariant@^2.2.4:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
-lodash.omit@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
-  integrity sha1-brGa5aHuHdnfC5aeZs4Lf6MLXmA=
-
-lodash.pick@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
-  integrity sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM=
+lodash@^4.5.0:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
 loose-envify@^1.0.0:
   version "1.4.0"
@@ -168,55 +162,55 @@ ua-parser-js@^0.7.19:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
   integrity sha512-T3PVJ6uz8i0HzPxOF9SWzWAlfN/DavlpQqepn22xgve/5QecC+XMCAtmUNnY7C9StehaV6exjUCI801lOI7QlQ==
 
-unimodules-barcode-scanner-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-barcode-scanner-interface/-/unimodules-barcode-scanner-interface-1.0.0.tgz#2847f080fbe7aaafd17aa7941472d85aaa1dfda9"
-  integrity sha512-7kYof5jsr0ur9NwQuqu5Hzf69F+/p5TbtSy02sHyOu81nHVUt0Ewr4V8babcgMhl9Wf9uYmAplrh53UsMmtySw==
+unimodules-barcode-scanner-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-barcode-scanner-interface/-/unimodules-barcode-scanner-interface-2.0.0-rc.0.tgz#d8bc4d72af6dba0cd8f686787190147a7f6a351f"
+  integrity sha512-8FI9JgvTjIIcbO/e3ClJlYl+b7uIZ4ScaPdRfi7PCcrGP+t98jJTNQIRk/GoamS3m6GrHa+4wr/XjW8y9nc3Ng==
 
-unimodules-camera-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-camera-interface/-/unimodules-camera-interface-1.0.0.tgz#63dcfdb63d6bbdff6b9be4c5fcdedccac7f0f14a"
-  integrity sha512-AFPOxe8KFroYnkC8lqlKx2NpGvnOM+LTBLuTFtFOUOx6aBCVZerBqY1X6bLBQAdo3MJw9aaJU2lb6EtE0TychQ==
+unimodules-camera-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-camera-interface/-/unimodules-camera-interface-2.0.0-rc.0.tgz#5c560e5929a8c1b29afed8f6549e08607f6c4d32"
+  integrity sha512-Gc3oZuAbCNztj8vO+rLv98MmPwsoFMjwVvllWnYUZsueBNadKKfDx3vMM60fXYo7KiRpRbHISNHeIHuwYy1C8w==
 
-unimodules-constants-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-constants-interface/-/unimodules-constants-interface-1.0.0.tgz#b92e2865d11532a57a32db5da6ad596a66427ab5"
-  integrity sha512-iTMKEqFWWaxoV6rjP3hLdH2/7psDI1Fz++YXNK+TXR0/dk73Sy7gqbm9rbwAqJN4potHpatPFprStY+Pgmy3qA==
+unimodules-constants-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-constants-interface/-/unimodules-constants-interface-2.0.0-rc.0.tgz#ca4e9321cd7423fa7e22a3504833616c045ead77"
+  integrity sha512-tycYW0TzrWwzUu8iFLQO72kjK7/FPkp0rwk/UuZpiv7tyDnco3HDRiYHDg5VaSlRiREOYT6FOr7WbgW4SM1lUA==
 
-unimodules-face-detector-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-face-detector-interface/-/unimodules-face-detector-interface-1.0.0.tgz#20894e24cc01749f68b1b8ff69ad8dc026380a39"
-  integrity sha512-sSBqU52ZAw2UK9Gh2wd4dfK8aX58BQabewZjJ7zMDAf2PV1vzGZb9b43Rn9j4B8m2KXd1UBE1PLrGvZc1i5qLA==
+unimodules-face-detector-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-face-detector-interface/-/unimodules-face-detector-interface-2.0.0-rc.0.tgz#f968f6bedcee1a343759a96afe94413b081ffd15"
+  integrity sha512-ovavyQ5+VP3HOsc/vBDE25F7pQtbZ3L9CrYz6w9HqDr3qcjeMF8kgJFBJUzX7zHmVj9V4r9SBO9E1qWblDBMCA==
 
-unimodules-file-system-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-file-system-interface/-/unimodules-file-system-interface-1.0.0.tgz#7f36832a5867c180a73adf16bac3780d51e80fdd"
-  integrity sha512-d8ymqi1i+XYARJ512vM4I74F51X8b8Xf4boiMpKVkkdu6ZSxGcyYRiKSuvBrjHYXoAKFaYDlFtSPfGrBuq7VPA==
+unimodules-file-system-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-file-system-interface/-/unimodules-file-system-interface-2.0.0-rc.0.tgz#bf542d0398b017321cc08c3066f6283f5bb2dd23"
+  integrity sha512-qOMebOLIT23U9rfYcm2Ej+oOyl4vTn+N0DR9P+bzFefukU3N3sg+TjugBCKCeVceiBF7A4FBtWUNZwz8tlvbhQ==
 
-unimodules-font-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-font-interface/-/unimodules-font-interface-1.0.0.tgz#8651d25f6072ef613136948b51561813c5ed177b"
-  integrity sha512-pPxBDM3eVMUc2Jf0aF+Z42Lax9+s6hhJk+cSdNhYXtXXI1uTkEnacCGSUouiTXtUctOen77ETOvuWOEV4Euusg==
+unimodules-font-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-font-interface/-/unimodules-font-interface-2.0.0-rc.0.tgz#c4a9ae7b05ca686c431547d41b70bf8e86c55289"
+  integrity sha512-Uo0W7q0O8GaYRdsBMWUU3BEi51ki3r0dbD2wiQEH6rBhM/MqPatWUWPr92V6YrpTjWDtYO2VFE+l41zgOcNEeA==
 
-unimodules-image-loader-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-image-loader-interface/-/unimodules-image-loader-interface-1.0.0.tgz#3fbcd95340d0ff69e6d614afa1d0e1e6beda3162"
-  integrity sha512-w6sILa8zxXgj1BPzNMZjbjhiuIfvBPHhojNKUK+HyrG12VpQz/NLvozzag5YAgpODwgMw+7wyfF5RX1MjEKCoA==
+unimodules-image-loader-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-image-loader-interface/-/unimodules-image-loader-interface-2.0.0-rc.0.tgz#9727bc2e73b21c3722a0ef3c03cf05d8c789aafa"
+  integrity sha512-G7yVJoYl12q0PNQTWbKR6MtoLz4m8NEX8rP9ZiNGGwV5H0+ZFAgXnyWyTuuocSXgN+EKtExBAfULgtQp5wR2qw==
 
-unimodules-permissions-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-permissions-interface/-/unimodules-permissions-interface-1.0.0.tgz#2e4581a8bb4a2e8c5b57a9c18016dfefb7e3738c"
-  integrity sha512-fPc8tmhU4y0ohnZeFOm8BkRabA46eXnELyWIHs0XXNOUrwnlK7KU4pfK7xw6bVuC3Tdu67eQkr3B1y6AMQBxAg==
+unimodules-permissions-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-permissions-interface/-/unimodules-permissions-interface-2.0.0-rc.0.tgz#9f21496c014f75c0e9b701669b7de7765e20656e"
+  integrity sha512-ZrlRhzGSkA/FHbJBcitTtBuIbswxWEsWueKP1bFK+yBPNch5mTPqqIZf5zsJzjC6zKvw3/1WKJw+CzUVkuPrLA==
 
-unimodules-sensors-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-sensors-interface/-/unimodules-sensors-interface-1.0.0.tgz#bb37720b56cb505e1035e0aa835aff2ed7008c7a"
-  integrity sha512-TgeQIQ3NKEn5x0VuPcbWT96uWW2uz9Tseuu+HagjC2/ybryD5SqifvbjFxF9st2dmHxhADyvFndvpWeFBOs0Ag==
+unimodules-sensors-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-sensors-interface/-/unimodules-sensors-interface-2.0.0-rc.0.tgz#2e0d173985f35fb842f11702382483575c7e3fcd"
+  integrity sha512-bwISzaSamv8ZcTUBWmLjTYCcnNjlziETyOLZM9M7JoTeo0FAAfRUZKqRzNyH1Ihx0ErL0HcrsHJffWAPINZsJg==
 
-unimodules-task-manager-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-task-manager-interface/-/unimodules-task-manager-interface-1.0.0.tgz#d93b2329dc96bb72b77d7de9d7b1c34efd85fc5b"
-  integrity sha512-Bsl4d6MaDX+ff57TUk6uxN91ic/1lygTOstS8iIpzmBunh99Fq3X3LZlPVrrEZOSYTGkyHiYlusX83HLmuGzeg==
+unimodules-task-manager-interface@~2.0.0-rc.0:
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/unimodules-task-manager-interface/-/unimodules-task-manager-interface-2.0.0-rc.0.tgz#a1040d81b07bd6007eecc93516737c8586d01b7c"
+  integrity sha512-0i3PuOzj4RqsjwdArqJUrEMYTUzThhio0NqBxPmLINC+cpYGYwA4NXmtHlIo8PlKCS5tyuqwY7lWv3pXh8qqiA==
 
 url-parse@^1.4.4:
   version "1.4.4"
