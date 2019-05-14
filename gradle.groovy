@@ -45,8 +45,8 @@ def readFromBuildGradle(String file) {
   def fileReader = new BufferedReader(new FileReader(gradleFile))
   def result = [:]
   for (def line = fileReader.readLine(); line != null; line = fileReader.readLine()) {
-    def versionMatch = line.trim() =~ /^version ?= ?'([0-9]+.[0-9]+.[0-9]+)'$/
-    def groupMatch = line.trim() =~ /^group ?= ?'([a-zA-Z]+.[a-zA-Z]+.[a-zA-Z]+)'$/
+    def versionMatch = line.trim() =~ /^version ?= ?'(\w+\.\w+\.\w+)'$/
+    def groupMatch = line.trim() =~ /^group ?= ?'([\w.]+)'$/
     if (versionMatch.size() == 1 && versionMatch[0].size() == 2) {
       result.version = versionMatch[0][1]
     }
