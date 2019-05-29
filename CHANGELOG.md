@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0
+
+### 🛠 Breaking changes
+
+- Updated core packages, please refer to [their changelogs](https://github.com/expo/expo/blob/master/CHANGELOG.md) to see the diff
+
+### 🐛 Bug fixes
+
+- Support version tags when adding dependencies for unimodules
+
 ## 0.3.1
 
 ### 🐛 Bug fixes
