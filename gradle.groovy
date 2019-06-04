@@ -21,20 +21,20 @@ class Unimodule {
   }
 }
 
-def readPackageFromJavaFile(String file) {
-  def javaFile = new File(file)
-  def javaFileReader = new BufferedReader(new FileReader(javaFile))
-  def javaFileContent = ""
-  while (javaFileContent.trim() == "") {
-    javaFileContent = javaFileReader.readLine()
+def readPackageFromJavaOrKotlinFile(String filePath) {
+  def file = new File(filePath)
+  def fileReader = new BufferedReader(new FileReader(file))
+  def fileContent = ""
+  while (fileContent.trim() == "") {
+    fileContent = fileReader.readLine()
   }
-  javaFileReader.close()
-  def match = javaFileContent =~ /^package ([0-9a-zA-Z._]*);$/
+  fileReader.close()
+  def match = fileContent =~ /^package ([0-9a-zA-Z._]*);?$/
   if (match.size() == 1 && match[0].size() == 2) {
     return match[0][1]
   }
 
-  throw new GradleException("File $file does not include package declaration")
+  throw new GradleException("Java or Kotlin file $file does not include package declaration")
 }
 
 def readFromBuildGradle(String file) {
@@ -59,11 +59,15 @@ def readFromBuildGradle(String file) {
 }
 
 def findDefaultBasePackage(String packageDir) {
-  def paths = new FileNameFinder().getFileNames(packageDir, "android/src/**/*Package.java", "")
+  def pathsJava = new FileNameFinder().getFileNames(packageDir, "android/src/**/*Package.{java,kt}")
+  def pathsKt = new FileNameFinder().getFileNames(packageDir, "android/src/**/*Package.kt")
+  def paths = pathsJava + pathsKt
+
   if (paths.size != 1) {
     return []
   }
-  def packageName = readPackageFromJavaFile(paths[0])
+
+  def packageName = readPackageFromJavaOrKotlinFile(paths[0])
   def className = new File(paths[0]).getName().split(Pattern.quote("."))[0]
   return ["$packageName.$className"]
 }
@@ -74,7 +78,7 @@ def generateBasePackageList(List<Unimodule> unimodules) {
     throw new GradleException("You need to have MainApplication.java in your project")
   }
   def mainAppDirectory = new File(findMainApp[0]).parentFile
-  def packageName = readPackageFromJavaFile(findMainApp[0])
+  def packageName = readPackageFromJavaOrKotlinFile(findMainApp[0])
 
   def fileBuilder = new StringBuilder()
   fileBuilder.append("package ${packageName}.generated;\n\n")
