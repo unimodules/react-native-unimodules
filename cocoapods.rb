@@ -6,7 +6,7 @@ def use_unimodules!(custom_options = {})
   options = {
     modules_paths: ['../node_modules'],
     target: 'react-native',
-    exclude: [],
+    exclude: ['expo-face-detector', 'expo-payments-stripe'],
   }.deep_merge(custom_options)
 
   modules_paths = options.fetch(:modules_paths)
