@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+### 🐛 Bug fixes
+
+- Added support for Kotlin ([#39](https://github.com/unimodules/react-native-unimodules/pull/39) by [@bbarthec](https://github.com/bbarthec))
+
 ## 0.4.0
 
 ### 🛠 Breaking changes
