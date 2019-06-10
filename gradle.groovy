@@ -73,7 +73,7 @@ def findDefaultBasePackage(String packageDir) {
 }
 
 def generateBasePackageList(List<Unimodule> unimodules) {
-  def findMainApp = new FileNameFinder().getFileNames(rootProject.getProjectDir().getPath(), '**/MainApplication.java', '')
+  def findMainApp = new FileNameFinder().getFileNames(rootProject.getProjectDir().getPath(), '**/MainApplication.java', 'enabled-modules/**')
   if (findMainApp.size() != 1) {
     throw new GradleException("You need to have MainApplication.java in your project")
   }
