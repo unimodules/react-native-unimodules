@@ -73,9 +73,12 @@ def findDefaultBasePackage(String packageDir) {
 }
 
 def generateBasePackageList(List<Unimodule> unimodules) {
-  def findMainApp = new FileNameFinder().getFileNames(rootProject.getProjectDir().getPath(), '**/MainApplication.java', '')
+  def findMainAppJava = new FileNameFinder().getFileNames(rootProject.getProjectDir().getPath(), '**/MainApplication.java')
+  def findMainAppKt = new FileNameFinder().getFileNames(rootProject.getProjectDir().getPath(), '**/MainApplication.kt')
+  def findMainApp = findMainAppJava + findMainAppKt
+
   if (findMainApp.size() != 1) {
-    throw new GradleException("You need to have MainApplication.java in your project")
+    throw new GradleException("You need to have MainApplication.java or MainApplication.kt in your project")
   }
   def mainAppDirectory = new File(findMainApp[0]).parentFile
   def packageName = readPackageFromJavaOrKotlinFile(findMainApp[0])
