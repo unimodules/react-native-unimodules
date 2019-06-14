@@ -22,8 +22,8 @@ npm install react-native-unimodules
   - If you need to customize the path to node_modules, for example because you are using yarn workspaces, then you can pass in a param for this: `use_unimodules!(modules_paths: ['./path/to/node_modules'])`
   - If you need to exclude some of the unimodules that you are not using but they got installed by your other dependencies (like `expo`), then you can pass in `exclude` param for this. For example, if you want to exclude `expo-face-detector`, you may want to use this: `use_unimodules!(exclude: ['expo-face-detector'])`
 - Run `pod install` again
-- Update your `AppDelegate.h` and `AppDelegate.m` according to [this diff](https://gist.github.com/brentvatne/94960dacb343310b76be9cc157d90049/revisions).
-  - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this diff](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
+- Update your `AppDelegate.h` and `AppDelegate.m` according to [to look like these](https://gist.github.com/brentvatne/1ece8c32a3c5c9d0ac3a470460c65603).
+  - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this gist](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
 
 #### Add permission usage description keys to `Info.plist`
 
