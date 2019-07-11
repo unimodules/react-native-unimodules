@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.2
+
+### 🐛 Bug fixes
+
+- Fixed MainApplication.kt not being recognized correctly. ([#46](https://github.com/unimodules/react-native-unimodules/pull/46) by [@geovannimp](https://github.com/geovannimp))
+
 ## 0.4.1
 
 ### 🐛 Bug fixes
