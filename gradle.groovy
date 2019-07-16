@@ -1,4 +1,5 @@
 import groovy.json.JsonSlurper
+import org.gradle.util.VersionNumber
 
 import java.util.regex.Pattern
 
