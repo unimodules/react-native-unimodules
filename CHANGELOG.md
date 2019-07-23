@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+### 🛠 Breaking changes
+
+- Updated core packages, please refer to [their changelogs](https://github.com/expo/expo/blob/master/CHANGELOG.md) to see the diff
+
 ## 0.4.2
 
 ### 🐛 Bug fixes
