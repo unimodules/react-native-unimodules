@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.2
+
+### 🐛 Bug fixes
+
+- Updated `@unimodules/core` to version `3.0.2` including proper ProGuard rules.
+
 ## 0.5.0
 
 ### 🛠 Breaking changes
