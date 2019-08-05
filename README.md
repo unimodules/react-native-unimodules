@@ -3,6 +3,8 @@
 This library contains the core Unimodule infrastructure and a collection of Unimodules and interfaces that are commonly depended on by other Unimodules.
 You will need to install this before using libraries from Foundation, like `expo-camera`, `expo-media-library`, and others.
 
+**Note: `react-native-unimodules` are not compatible with React Native 0.60.x yet.**
+
 ## Installation
 
 The easiest way to do this is to initialize a "bare" project with `expo-cli` using `expo init --template bare-minimum`.
