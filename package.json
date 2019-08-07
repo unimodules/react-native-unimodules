@@ -6,8 +6,7 @@
   "types": "index.d.ts",
   "private": false,
   "scripts": {
-    "postinstall": "node ./scripts/postinstall.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node ./scripts/postinstall.js"
   },
   "repository": {
     "type": "git",
