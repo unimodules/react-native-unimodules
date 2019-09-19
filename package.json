@@ -1,6 +1,6 @@
 {
   "name": "react-native-unimodules",
-  "version": "0.6.0",
+  "version": "0.7.0-rc.1",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@unimodules/core": "~4.0.0",
-    "@unimodules/react-native-adapter": "~4.0.0",
+    "@unimodules/react-native-adapter": "~5.0.0-alpha.0",
     "chalk": "^2.4.2",
     "expo-asset": "~7.0.0",
     "expo-constants": "~7.0.0",
