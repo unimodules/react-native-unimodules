@@ -1,6 +1,6 @@
 {
   "name": "react-native-unimodules",
-  "version": "0.6.0-rc.1",
+  "version": "0.6.0",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -13,26 +13,26 @@
     "url": "https://github.com/unimodules/react-native-unimodules.git"
   },
   "dependencies": {
-    "@unimodules/core": "~4.0.0-rc.0",
-    "@unimodules/react-native-adapter": "~4.0.0-rc.0",
+    "@unimodules/core": "~4.0.0",
+    "@unimodules/react-native-adapter": "~4.0.0",
     "chalk": "^2.4.2",
-    "expo-asset": "~7.0.0-rc.0",
-    "expo-constants": "~7.0.0-rc.0",
-    "expo-file-system": "~7.0.0-rc.0",
-    "expo-permissions": "~7.0.0-rc.0",
-    "expo-app-loader-provider": "~7.0.0-rc.0",
-    "unimodules-barcode-scanner-interface": "~4.0.0-rc.0",
-    "unimodules-camera-interface": "~4.0.0-rc.0",
-    "unimodules-constants-interface": "~4.0.0-rc.0",
-    "unimodules-face-detector-interface": "~4.0.0-rc.0",
-    "unimodules-file-system-interface": "~4.0.0-rc.0",
-    "unimodules-font-interface": "~4.0.0-rc.0",
-    "unimodules-image-loader-interface": "~4.0.0-rc.0",
-    "unimodules-permissions-interface": "~4.0.0-rc.0",
-    "unimodules-sensors-interface": "~4.0.0-rc.0",
-    "unimodules-task-manager-interface": "~4.0.0-rc.0"
+    "expo-asset": "~7.0.0",
+    "expo-constants": "~7.0.0",
+    "expo-file-system": "~7.0.0",
+    "expo-permissions": "~7.0.0",
+    "expo-app-loader-provider": "~7.0.0",
+    "unimodules-barcode-scanner-interface": "~4.0.0",
+    "unimodules-camera-interface": "~4.0.0",
+    "unimodules-constants-interface": "~4.0.0",
+    "unimodules-face-detector-interface": "~4.0.0",
+    "unimodules-file-system-interface": "~4.0.0",
+    "unimodules-font-interface": "~4.0.0",
+    "unimodules-image-loader-interface": "~4.0.0",
+    "unimodules-permissions-interface": "~4.0.0",
+    "unimodules-sensors-interface": "~4.0.0",
+    "unimodules-task-manager-interface": "~4.0.0"
   },
   "author": "",
   "license": "MIT",
-  "gitHead": "5d4fcf318390f59cecd1ae5d191afb15488a4447"
+  "gitHead": "4e13b3cb88d9205f14bee7764038ab2dd9ef1fbd"
 }
