@@ -21,7 +21,7 @@ Now you need to configure the library for iOS and/or Android.
 - Update your `AppDelegate.h` and `AppDelegate.m` according to [to look like these](https://gist.github.com/brentvatne/1ece8c32a3c5c9d0ac3a470460c65603).
   - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this gist](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
 
-### Add permission usage description keys to `Info.plist`
+### Add permission usage description keys to Info.plist
 
 In order to submit your app to the App Store, you will need to eventually add permission usage keys to your `Info.plist`. Even if you don't use the APIs described, you need to include the keys because code related to asking the permission will be bundled regardless, and Apple's static analysis tools will detect it and reject your app if the key isn't present. Including the key without using it has no impact to your users - iOS app permissions are requested at runtime and not listed in the app store listing as they are on Android. Test the permission prompts and customize the message as needed.
 
