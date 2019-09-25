@@ -74,11 +74,13 @@ def findDefaultBasePackage(String packageDir) {
 }
 
 def generateBasePackageList(List<Unimodule> unimodules) {
-  def findMainJavaApp = new FileNameFinder().getFileNames(rootProject.getProjectDir().getPath(), '**/MainApplication.java', '')
-  def findMainKtApp = new FileNameFinder().getFileNames(rootProject.getProjectDir().getPath(), '**/MainApplication.kt', '')
+  def findMainJavaApp = new FileNameFinder().getFileNames(project.getProjectDir().getPath(), '**/MainApplication.java', '')
+  def findMainKtApp = new FileNameFinder().getFileNames(project.getProjectDir().getPath(), '**/MainApplication.kt', '')
   
-  if (findMainJavaApp.size() != 1 && findMainKtApp.size() != 1) {
-    throw new GradleException("You need to have MainApplication in your project")
+  if (findMainJavaApp.size() + findMainKtApp.size() > 1) {
+    throw new GradleException("You need to have exactly one MainApplication in your project, found: $findMainJavaApp, $findMainKtApp")
+  } else if (findMainJavaApp.size() + findMainKtApp.size() == 0) {
+    throw new GradleException("You need to have a MainApplication in your project: $project.projectDir")
   }
 
   def findMainApp = (findMainJavaApp.size() == 1) ? findMainJavaApp : findMainKtApp
@@ -189,7 +191,6 @@ def addUnimodulesDependencies(String target, List exclude, List modulesPaths, Cl
   def results = findUnimodules(target, exclude, modulesPaths)
   def unimodules = results.unimodules
   def duplicates = results.duplicates
-  generateBasePackageList(unimodules)
 
   if (unimodules.size() > 0) {
     println()
@@ -212,6 +213,8 @@ def addUnimodulesDependencies(String target, List exclude, List modulesPaths, Cl
     println()
     println Colors.YELLOW + "No unimodules found. Are you sure you've installed JS dependencies?" + Colors.NORMAL
   }
+  
+  return unimodules
 }
 
 ext.addUnimodulesDependencies = { Map customOptions = [:] ->
@@ -220,12 +223,17 @@ ext.addUnimodulesDependencies = { Map customOptions = [:] ->
       configuration: 'implementation',
       target       : 'react-native',
       exclude      : [],
+      generateBasePackageList: true,
   ] << customOptions
 
-  addUnimodulesDependencies(options.target, options.exclude, options.modulesPaths, {unimodule ->
+  def unimodules = addUnimodulesDependencies(options.target, options.exclude, options.modulesPaths, {unimodule ->
     Object dependency = project.project(':' + unimodule.name)
     project.dependencies.add(options.configuration, dependency)
   })
+
+  if (options.generateBasePackageList) {
+    generateBasePackageList(unimodules)
+  }
 }
 
 ext.addMavenUnimodulesDependencies = { Map customOptions = [:] ->
@@ -234,14 +242,19 @@ ext.addMavenUnimodulesDependencies = { Map customOptions = [:] ->
       configuration: 'implementation',
       target       : 'react-native',
       exclude      : [],
+      generateBasePackageList: true,
   ] << customOptions
 
-  addUnimodulesDependencies(options.target, options.exclude, options.modulesPaths, {unimodule ->
+  def unimodules = addUnimodulesDependencies(options.target, options.exclude, options.modulesPaths, {unimodule ->
     project.dependencies.add(
         options.configuration,
         "${unimodule.androidGroup}:${unimodule.name}:${unimodule.version}"
     )
   })
+
+  if (options.generateBasePackageList) {
+    generateBasePackageList(unimodules)
+  }
 }
 
 ext.includeUnimodulesProjects = { Map customOptions = [:] ->
