@@ -26,14 +26,14 @@ def readPackageFromJavaOrKotlinFile(String filePath) {
   def file = new File(filePath)
   def fileReader = new BufferedReader(new FileReader(file))
   def fileContent = ""
-  while (fileContent.trim() == "") {
-    fileContent = fileReader.readLine()
+  while ((fileContent = fileReader.readLine()) != null) {
+    def match = fileContent =~ /^package ([0-9a-zA-Z._]*);?$/
+    if (match.size() == 1 && match[0].size() == 2) {
+      fileReader.close()
+      return match[0][1]
+    }
   }
   fileReader.close()
-  def match = fileContent =~ /^package ([0-9a-zA-Z._]*);?$/
-  if (match.size() == 1 && match[0].size() == 2) {
-    return match[0][1]
-  }
 
   throw new GradleException("Java or Kotlin file $file does not include package declaration")
 }
