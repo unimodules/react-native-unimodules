@@ -7,11 +7,13 @@ def use_unimodules!(custom_options = {})
     modules_paths: ['../node_modules'],
     target: 'react-native',
     exclude: [],
+    flags: {},
   }.deep_merge(custom_options)
 
   modules_paths = options.fetch(:modules_paths)
   modules_to_exclude = options.fetch(:exclude)
   target = options.fetch(:target)
+  flags = options.fetch(:flags)
 
   unimodules = {}
   unimodules_duplicates = []
@@ -68,7 +70,9 @@ def use_unimodules!(custom_options = {})
 
       puts " #{green unimodule[:name]}#{cyan "@"}#{magenta unimodule[:version]} from #{blue podspec_directory}"
 
-      pod "#{pod_name}", path: podspec_directory
+      pod_options = flags.merge({ path: podspec_directory })
+
+      pod "#{pod_name}", pod_options
     }
 
     if unimodules_duplicates.length > 0
