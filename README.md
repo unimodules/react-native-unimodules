@@ -76,11 +76,22 @@ If you need to exclude some of the unimodules that you are not using but they go
 
 ## 🤖 Configure Android
 
-- At the top of `android/settings.gradle`, add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` and then on the next line add `includeUnimodulesProjects()`.
-- Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere in `android/app/build.gradle` and then `addUnimodulesDependencies()` inside `dependencies {}` block.
-- We recommend using Java 1.8, you can set this in `android/app/build.gradle` [like this](https://github.com/expo/expo/commit/e175f870418fc69e8c129168118264439d73d7cc).
-- Update `minSdkVersion` in `android/build.gradle` to `21`.
-- Update your `MainApplication.java` to according to [this diff for react-native <= 0.59](https://gist.github.com/tsapeta/9e50a4c2c0083fe8e578959526bfbed3/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa) and [this diff for react-native >= 0.60](https://gist.github.com/brentvatne/62a9c949aa7d1cda410adbe01cba0554/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa).
+__In `android/settings.gradle`__
+1. At the top add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` 
+1. Then call `includeUnimodulesProjects()` on the next line.
+
+__In `android/app/build.gradle`__
+1. Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere.
+1. Add `addUnimodulesDependencies()` inside `dependencies {}` block.
+1. We recommend you use Java 1.8, you can set this [like this](https://github.com/expo/expo/commit/e175f870418fc69e8c129168118264439d73d7cc).
+
+__In `android/build.gradle`__
+1. Update `minSdkVersion` to `21`.
+
+__In `MainApplication.java`__
+Make the changes outlined in the diff that correspondes to your react-native version. 
+- [this diff for react-native <= 0.59](https://gist.github.com/tsapeta/9e50a4c2c0083fe8e578959526bfbed3/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
+- [this diff for react-native >= 0.60](https://gist.github.com/brentvatne/62a9c949aa7d1cda410adbe01cba0554/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
 
 ### Optional: Add permissions to AndroidManifest.xml
 
