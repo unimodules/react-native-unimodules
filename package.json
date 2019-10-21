@@ -1,6 +1,6 @@
 {
   "name": "react-native-unimodules",
-  "version": "0.7.0-rc.2",
+  "version": "0.7.0-rc.3",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@unimodules/core": "~4.0.0",
-    "@unimodules/react-native-adapter": "~5.0.0-alpha.0",
+    "@unimodules/react-native-adapter": "~5.0.0-rc.0",
     "chalk": "^2.4.2",
     "expo-asset": "~7.0.0",
     "expo-constants": "~8.0.0-rc.1",
@@ -34,5 +34,5 @@
   },
   "author": "",
   "license": "MIT",
-  "gitHead": "4e13b3cb88d9205f14bee7764038ab2dd9ef1fbd"
+  "gitHead": "35be2e1706a28466bec10bda734b2925f64cb237"
 }
