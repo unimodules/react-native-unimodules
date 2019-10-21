@@ -1,6 +1,6 @@
 {
   "name": "react-native-unimodules",
-  "version": "0.7.0-rc.3",
+  "version": "0.7.0-rc.4",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -13,7 +13,7 @@
     "url": "https://github.com/unimodules/react-native-unimodules.git"
   },
   "dependencies": {
-    "@unimodules/core": "~4.0.0",
+    "@unimodules/core": "~5.0.0-rc.0",
     "@unimodules/react-native-adapter": "~5.0.0-rc.0",
     "chalk": "^2.4.2",
     "expo-asset": "~7.0.0",
