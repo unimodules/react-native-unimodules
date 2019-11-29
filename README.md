@@ -81,7 +81,7 @@ __In `android/settings.gradle`__
 1. Then call `includeUnimodulesProjects()` on the next line.
 
 __In `android/app/build.gradle`__
-1. Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere.
+1. Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere before the `dependencies {}` block.
 1. Add `addUnimodulesDependencies()` inside `dependencies {}` block.
 1. We recommend you use Java 1.8, you can set this [like this](https://github.com/expo/expo/commit/e175f870418fc69e8c129168118264439d73d7cc).
 
