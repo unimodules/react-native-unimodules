@@ -70,7 +70,7 @@ def use_unimodules!(custom_options = {})
 
       puts " #{green unimodule[:name]}#{cyan "@"}#{magenta unimodule[:version]} from #{blue podspec_directory}"
 
-      pod_options = flags.merge({ path: podspec_directory })
+      pod_options = flags.merge({ path: podspec_directory.to_s })
 
       pod "#{pod_name}", pod_options
     }
