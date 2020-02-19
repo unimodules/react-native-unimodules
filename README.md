@@ -21,41 +21,6 @@ Now you need to configure the library for iOS and/or Android.
 - Update your `AppDelegate.h` and `AppDelegate.m` according to [to look like these](https://gist.github.com/brentvatne/1ece8c32a3c5c9d0ac3a470460c65603).
   - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this gist](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
 
-### Add permission usage description keys to Info.plist
-
-In order to submit your app to the App Store, you will need to eventually add permission usage keys to your `Info.plist`. Even if you don't use the APIs described, you need to include the keys because code related to asking the permission will be bundled regardless, and Apple's static analysis tools will detect it and reject your app if the key isn't present. Including the key without using it has no impact to your users - iOS app permissions are requested at runtime and not listed in the app store listing as they are on Android. Test the permission prompts and customize the message as needed.
-
-<details><summary>See a list of keys to add to Info.plist</summary>
-<p>
-
-```xml
-<key>NSCalendarsUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to access your calendar</string>
-<key>NSCameraUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to use the camera</string>
-<key>NSContactsUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to access your contacts</string>
-<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to use your location</string>
-<key>NSLocationAlwaysUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to use your location</string>
-<key>NSLocationWhenInUseUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to use your location</string>
-<key>NSMicrophoneUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to access your microphone</string>
-<key>NSMotionUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
-<key>NSPhotoLibraryAddUsageDescription</key>
-<string>Give $(PRODUCT_NAME) permission to save photos</string>
-<key>NSPhotoLibraryUsageDescription</key>
-<string>Give $(PRODUCT_NAME) permission to access your photos</string>
-<key>NSRemindersUsageDescription</key>
-<string>Allow $(PRODUCT_NAME) to access your reminders</string>
-```
-
-</p>
-</details>
-
 ### Advanced configuration
 
 <details><summary>Need to customize node_modules path?</summary>
@@ -92,29 +57,6 @@ __In `MainApplication.java`__
 Make the changes outlined in the diff that correspondes to your react-native version. 
 - [this diff for react-native <= 0.59](https://gist.github.com/tsapeta/9e50a4c2c0083fe8e578959526bfbed3/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
 - [this diff for react-native >= 0.60](https://gist.github.com/brentvatne/62a9c949aa7d1cda410adbe01cba0554/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
-
-### Optional: Add permissions to AndroidManifest.xml
-
-Add permissions you would like to use in your app to `android/app/src/main/AndroidManifest.xml`:
-
-<details><summary>See a list of some Android permissions</summary>
-<p>
-
-```xml
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.CAMERA" />
-<uses-permission android:name="android.permission.READ_CONTACTS" />
-<uses-permission android:name="android.permission.READ_CALENDAR" />
-<uses-permission android:name="android.permission.WRITE_CALENDAR" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.RECORD_AUDIO" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_SETTINGS" />
-```
-
-</p>
-</details>
 
 ### Advanced configuration
 
