@@ -16,7 +16,6 @@
     "@unimodules/core": "~5.0.0",
     "@unimodules/react-native-adapter": "~5.0.0",
     "chalk": "^2.4.2",
-    "expo-app-loader-provider": "~8.0.0",
     "expo-asset": "~8.0.0",
     "expo-constants": "~8.0.0",
     "expo-file-system": "~8.0.0",
