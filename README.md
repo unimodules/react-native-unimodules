@@ -6,7 +6,7 @@ The easiest way to use the library is to initialize a "bare" project with `expo-
 
 ## 📦 Installation
 
-**This project requires that you use CocoaPods on iOS**, to set it up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://facebook.github.io/react-native/docs/integration-with-existing-apps#3-install-cocoapods). React Native >= 0.60 ships with Cocoapods support by default, so this should be easy if you're already on that version.
+**This project requires that you use CocoaPods on iOS**, to set it up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://reactnative.dev/docs/integration-with-existing-apps#3-install-cocoapods). React Native >= 0.60 ships with Cocoapods support by default, so this should be easy if you're already on that version.
 
 ```bash
 npm install react-native-unimodules
