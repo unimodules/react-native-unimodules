@@ -41,22 +41,26 @@ If you need to exclude some of the unimodules that you are not using but they go
 
 ## 🤖 Configure Android
 
-__In `android/settings.gradle`__
-1. At the top add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'` 
+**In `android/settings.gradle`**
+
+1. At the top add `apply from: '../node_modules/react-native-unimodules/gradle.groovy'`
 1. Then call `includeUnimodulesProjects()` on the next line.
 
-__In `android/app/build.gradle`__
+**In `android/app/build.gradle`**
+
 1. Add `apply from: '../../node_modules/react-native-unimodules/gradle.groovy'` anywhere before the `dependencies {}` block.
 1. Add `addUnimodulesDependencies()` inside `dependencies {}` block.
 1. We recommend you use Java 1.8, you can set this [like this](https://github.com/expo/expo/commit/e175f870418fc69e8c129168118264439d73d7cc).
 
-__In `android/build.gradle`__
+**In `android/build.gradle`**
+
 1. Update `minSdkVersion` to `21`.
 
-__In `MainApplication.java`__
-Make the changes outlined in the diff that correspondes to your react-native version. 
-- [this diff for react-native <= 0.59](https://gist.github.com/tsapeta/9e50a4c2c0083fe8e578959526bfbed3/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
-- [this diff for react-native >= 0.60](https://gist.github.com/brentvatne/62a9c949aa7d1cda410adbe01cba0554/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
+**In `MainApplication.java`**
+Make the changes outlined in the diff that correspondes to your react-native version.
+
+- [this diff for react-native <= 0.59](https://gist.github.com/mczernek/cbc9735e9df9f70f1f6b75bdf2d63d5a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
+- [this diff for react-native >= 0.60](https://gist.github.com/mczernek/ae776a50159f4b021309924f2b150436/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
 
 ### Advanced configuration
 
@@ -91,12 +95,7 @@ It's possible that you will not have to use any of the code provided by this pac
 But it's likely that you will want to use something like FileSystem or Permissions, and to do that you can import the following modules like so:
 
 ```js
-import {
-  Asset,
-  Constants,
-  FileSystem,
-  Permissions,
-} from 'react-native-unimodules';
+import { Asset, Constants, FileSystem, Permissions } from 'react-native-unimodules';
 ```
 
 You can import them directly from the specific Unimodule package if you like, but your linter may complain about importing a transitive dependency.
