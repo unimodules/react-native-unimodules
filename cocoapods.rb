@@ -71,14 +71,11 @@ def use_unimodules!(custom_options = {})
       puts " #{green unimodule[:name]}#{cyan "@"}#{magenta unimodule[:version]} from #{blue podspec_directory}"
 
       pod_options = flags.merge({ path: podspec_directory.to_s })
+      pod_options = add_test_specs(podspecFile(directory, subdirectory), pod_options)
 
-      puts "#{magenta "With options"} #{green pod_options}"
-
-      if unimodule[:name].eql?('expo-web-browser')
-        puts "#{magenta "Specyfing tests for"} #{green unimodule[:name]}"
-        pod_options = pod_options.merge({ testspecs: ['Tests'] })
-      end
-
+      # if unimodule[:name].eql?('expo-web-browser')
+      
+      puts  "#{magenta pod_options}"
       pod "#{pod_name}", pod_options
     }
 
@@ -101,8 +98,23 @@ def use_unimodules!(custom_options = {})
 end
 
 def find_pod_name(package_path, subdirectory)
-  podspec_path = Dir.glob(File.join(package_path, subdirectory, '*.podspec')).first
+  podspec_path = podspecFile(package_path, subdirectory)
   return podspec_path && File.basename(podspec_path).chomp('.podspec')
+end
+
+def podspecFile(package_path, subdirectory)
+  return podspec_path = Dir.glob(File.join(package_path, subdirectory, '*.podspec')).first
+end
+
+def add_test_specs(podspecFile, pod_options)
+  tests_spec_regex = /test_spec.*['"`](.*)[`'"]/
+
+  File.foreach(podspecFile) do |line|
+    if line =~ tests_spec_regex
+      pod_options = pod_options.merge({ testspecs: [line.match(tests_spec_regex)[1]] })
+    end
+  end
+  return pod_options
 end
 
 def unimodule_supports_platform(platforms, platform)
