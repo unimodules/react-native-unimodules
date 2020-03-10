@@ -72,6 +72,13 @@ def use_unimodules!(custom_options = {})
 
       pod_options = flags.merge({ path: podspec_directory.to_s })
 
+      puts "#{magenta "With options"} #{green pod_options}"
+
+      if unimodule[:name].eql?('expo-web-browser')
+        puts "#{magenta "Specyfing tests for"} #{green unimodule[:name]}"
+        pod_options = pod_options.merge({ testspecs: ['Tests'] })
+      end
+
       pod "#{pod_name}", pod_options
     }
 
