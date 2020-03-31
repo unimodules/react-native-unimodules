@@ -59,8 +59,8 @@ If you need to exclude some of the unimodules that you are not using but they go
 **In `MainApplication.java`**
 Make the changes outlined in the diff that correspondes to your react-native version.
 
-- [this diff for react-native <= 0.59](https://gist.github.com/mczernek/cbc9735e9df9f70f1f6b75bdf2d63d5a/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
-- [this diff for react-native >= 0.60](https://gist.github.com/mczernek/ae776a50159f4b021309924f2b150436/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
+- [this diff for react-native <= 0.59](https://gist.github.com/mczernek/0670ec16ca6071796853a66d589b49a5/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
+- [this diff for react-native >= 0.60](https://gist.github.com/mczernek/9de9e184abc430e9e3508d26738c8a14/revisions#diff-a2e7ff8a82f1c4be06f8b8163f2afefa)
 
 ### Advanced configuration
 
