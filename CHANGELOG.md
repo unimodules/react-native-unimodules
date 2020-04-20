@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.9.0
+
+### 📚 Library updates
+
+- Updated `@unimodules/react-native-adapter` to version `5.2.0`.
+
+## 0.8.1
+
+### 🎉 New features
+
+- Added `unimodules-app-loader` to dependencies.
+
+## 0.8.0
+
+### 🛠 Breaking changes
+
+- Updated core packages, please refer to [their changelogs](https://github.com/expo/expo/blob/master/CHANGELOG.md) to see the diff.
+- Removed `expo-app-loader-provider` from dependencies.
+
+### 🎉 New features
+
+- Added `expo-image-loader` to dependencies.
+
+### 🐛 Bug fixes
+
+- Fix `pod install --deployment` failing due to pathname object being used instead of a string. ([#96](https://github.com/unimodules/react-native-unimodules/pull/96) by [@tsapeta](https://github.com/tsapeta))
+
+## 0.7.0
+
+### 📚 Library updates
+
+- Updated `@unimodules/react-native-adapter` to version `5.0.0`.
+
+### 🛠 Breaking changes
+
+- Updated core packages, please refer to [their changelogs](https://github.com/expo/expo/blob/master/CHANGELOG.md) to see the diff.
+
+### 🎉 New features
+
+- Allow passing custom pod flags to the unimodules.
+
+## 0.6.0
+
+### 🛠 Breaking changes
+
+- Updated core packages, please refer to [their changelogs](https://github.com/expo/expo/blob/master/CHANGELOG.md) to see the diff.
+
+## 0.5.3
+
 ## 0.5.2
 
 ### 🐛 Bug fixes
