@@ -2,7 +2,11 @@
 
 This library contains the core unimodule infrastructure and a collection of unimodules and interfaces that are commonly depended on by other unimodules. You only need to install `react-native-unimodules` once and then you will be able to use [most of the packages from the Expo SDK](https://docs.expo.io/versions/latest/bare/unimodules-full-list/), like [expo-camera](https://docs.expo.io/versions/latest/sdk/camera/), [expo-media-library](https://docs.expo.io/versions/latest/sdk/media-library/) and many more, [in any React Native project](https://blog.expo.io/you-can-now-use-expo-apis-in-any-react-native-app-7c3a93041331).
 
-The easiest way to use the library is to initialize a "bare" project with `expo-cli` (`npm i -g expo-cli`) using `expo init --template bare-minimum` or `expo init --template expo-template-bare-typescript` if you prefer TypeScript. If you have an existing project you'd like to install it into, please read the following instructions.
+The easiest way to use the library is to initialize a project with it already installed: `npx create-react-native-app my-app`.
+
+> You can also use `expo-cli` to do this - run `npm i -g expo-cli` and then `expo init --template bare-minimum` or `expo init --template expo-template-bare-typescript` if you prefer TypeScript.
+
+If you have an existing project you'd like to install it into, please read the following instructions.
 
 ## 📦 Installation
 
