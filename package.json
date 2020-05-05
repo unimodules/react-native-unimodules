@@ -13,7 +13,7 @@
     "url": "https://github.com/unimodules/react-native-unimodules.git"
   },
   "dependencies": {
-    "@unimodules/core": "~5.1.0",
+    "@unimodules/core": "~5.1.1",
     "@unimodules/react-native-adapter": "~5.2.0",
     "chalk": "^2.4.2",
     "expo-asset": "~8.1.0",
