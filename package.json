@@ -1,6 +1,6 @@
 {
   "name": "react-native-unimodules",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -35,5 +35,5 @@
   },
   "author": "",
   "license": "MIT",
-  "gitHead": "ed1822a2f71f05d8db1ba0ea583f9559dc528eef"
+  "gitHead": "6aa1425c5794afb9610c1276b8c04639b47dc9c3"
 }
