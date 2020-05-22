@@ -20,7 +20,22 @@ Now you need to configure the library for iOS and/or Android.
 
 ## 🍎 Configure iOS
 
-- Open `ios/Podfile` in your editor and make it look [like this one on react-native <= 0.59](https://gist.github.com/sjchmiela/6c079f2173938a9a61a7c6f053c45000) or [like this one on react-native >= 0.60](https://gist.github.com/brentvatne/d093e440698404803bd9c29d962949b0/revisions#diff-4a25b996826623c4a3a4910f47f10c30).
+Open `ios/Podfile` in your editor and update it according to your version of React Native:
+
+### React Native <= 0.59
+
+Make your Podfile look [like this one](https://gist.github.com/sjchmiela/6c079f2173938a9a61a7c6f053c45000)
+
+### React Native >= 0.60
+
+Make your Podfile look [like this one](https://gist.github.com/brentvatne/d093e440698404803bd9c29d962949b0/revisions#diff-4a25b996826623c4a3a4910f47f10c30). Normally it means the following:
+
+- Set the minimum deployment target to version 10: `platform :ios, '10.0'`
+- On top of your file, add `require_relative '../node_modules/react-native-unimodules/cocoapods.rb'`
+- Towards the end of your Podfile, just below `use_native_modules!`, add `use_unimodules!`
+
+### Finalize installation
+
 - Run `pod install` again
 - Update your `AppDelegate.h` and `AppDelegate.m` according to [to look like these](https://gist.github.com/brentvatne/1ece8c32a3c5c9d0ac3a470460c65603).
   - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this gist](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
