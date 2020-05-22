@@ -31,7 +31,8 @@ Make your Podfile look [like this one](https://gist.github.com/sjchmiela/6c079f2
 Make your Podfile look [like this one](https://gist.github.com/brentvatne/d093e440698404803bd9c29d962949b0/revisions#diff-4a25b996826623c4a3a4910f47f10c30). Normally it means the following:
 
 - Set the minimum deployment target to version 10: `platform :ios, '10.0'`
-- At the end of your Podfile, just below `use_native_modules!`, add `use_unimodules!`
+- On top of your file, add `require_relative '../node_modules/react-native-unimodules/cocoapods.rb'`
+- Towards the end of your Podfile, just below `use_native_modules!`, add `use_unimodules!`
 
 ### Finalize installation
 
