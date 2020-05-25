@@ -10,7 +10,7 @@ If you have an existing project you'd like to install it into, please read the f
 
 ## 📦 Installation
 
-**This project requires that you use CocoaPods on iOS**, to set it up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://facebook.github.io/react-native/docs/integration-with-existing-apps#3-install-cocoapods). React Native >= 0.60 ships with Cocoapods support by default, so this should be easy if you're already on that version.
+**This project requires that you use CocoaPods on iOS**, to set it up see [this gist](https://gist.github.com/brentvatne/b0ea11a36dc423e441b7d36e36eb5a26), or relevant parts of the [this guide](https://facebook.github.io/react-native/docs/integration-with-existing-apps#3-install-cocoapods). React Native >= 0.60 ships with CocoaPods support by default, so this should be easy if you're already on that version.
 
 ```bash
 npm install react-native-unimodules
@@ -21,7 +21,7 @@ Now you need to configure the library for iOS and/or Android.
 ## 🍎 Configure iOS
 
 - Open `ios/Podfile` in your editor and make it look [like this one on react-native <= 0.59](https://gist.github.com/sjchmiela/6c079f2173938a9a61a7c6f053c45000) or [like this one on react-native >= 0.60](https://gist.github.com/brentvatne/d093e440698404803bd9c29d962949b0/revisions#diff-4a25b996826623c4a3a4910f47f10c30).
-- Run `pod install` again
+- Run `npx pod-install` again
 - Update your `AppDelegate.h` and `AppDelegate.m` according to [to look like these](https://gist.github.com/brentvatne/1ece8c32a3c5c9d0ac3a470460c65603).
   - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this gist](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
 
