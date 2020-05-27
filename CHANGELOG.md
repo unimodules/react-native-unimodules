@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0
+
+### 📚 Library updates
+
+- Updated dependencies to match versions included in Expo SDK38.
+
 ## 0.9.0
 
 ### 📚 Library updates
