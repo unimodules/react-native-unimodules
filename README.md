@@ -24,6 +24,12 @@ Now you need to configure the library for iOS and/or Android.
 - Run `npx pod-install` again
 - Update your `AppDelegate.h` and `AppDelegate.m` according to [to look like these](https://gist.github.com/brentvatne/1ece8c32a3c5c9d0ac3a470460c65603).
   - If you use [`react-native-navigation`](https://github.com/wix/react-native-navigation), you will need to use its `bridgeManagerDelegate` option [like in this gist](https://gist.github.com/brentvatne/67909ec442121de22c9b81c629a99aa6).
+  
+As a summary, make these changes for `react-native >= 0.60`: 
+- [ios/Podfile](https://github.com/SConaway/rnfb-test/compare/dd299e6ff3346abccc1dbe0b4047af30f61f62a0..master#diff-2505890afb91c875be64ad195a1502a6)
+- [ios/your_app/project.pbxproj](https://github.com/SConaway/rnfb-test/compare/dd299e6ff3346abccc1dbe0b4047af30f61f62a0..master#diff-f7820ffe40fb07eaddd12e69f9212e89)
+- [ios/your_app.xcodeproj/AppDelagate.h](https://github.com/SConaway/rnfb-test/compare/dd299e6ff3346abccc1dbe0b4047af30f61f62a0..master#diff-045646bca2dd6295525261813d6cfe67)
+- [ios/your_app/AppDelagate.m](https://github.com/SConaway/rnfb-test/compare/dd299e6ff3346abccc1dbe0b4047af30f61f62a0..master#diff-422a322849f4612fbe55f5b8b2a0d0d7)
 
 ### Advanced configuration
 
